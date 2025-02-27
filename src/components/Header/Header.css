@@ -1,0 +1,64 @@
+/* Estilização do Header */
+.top-bar {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-color);
+    color: var(--bright-color);
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px var(--dark-light-shadow-color);
+    font-family: Arial, sans-serif;
+}
+
+/* Estilização do título */
+.top-bar h1, .top-bar h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--bright-color);
+}
+
+/* Estilização da lista */
+.top-bar ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Estilização do logout (opcional) */
+.top-bar ul li.logout-link a {
+    color: var(--secondary-color);
+}
+
+.top-bar ul li.logout-link a:hover {
+    color: var(--secondary-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .top-bar {
+        text-align: center;
+    }
+
+    .top-bar ul {
+        margin-top: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 12px;
+}
+.top-bar a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
