@@ -14,7 +14,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <Button type='close' onclick={onClose}>
+        <Button type='close' onclick={onClose} className='white'>
           &times;
         </Button>
         {children}

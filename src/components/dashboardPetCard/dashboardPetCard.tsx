@@ -7,6 +7,7 @@ import Modal from "../modal/modal";
 
 import './dashboardPetCard.css';
 import Button from 'components/button/button';
+import PetForm from 'components/petForm/petForm';
 import HighlightText from 'components/highlightText/highlightText';
 
 interface DashboardPetCardProps {
@@ -40,7 +41,7 @@ const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ Pets, Family }) => 
       <Button onclick={() => setIsOpen(true)} type='primary'>Adicionar Pet</Button>
 
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <p>Este é um modal simples e reutilizável.</p>
+        <PetForm />
       </Modal>
 
     </div>

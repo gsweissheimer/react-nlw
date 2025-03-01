@@ -94,8 +94,9 @@ p {
   font-size: 2rem;
 }
 
-.white-title {
-  color: white;
+.white-title,
+.white-title span {
+  color: white !important;
 }
 .black-title {
   color: var(--dark-color);

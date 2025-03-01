@@ -65,6 +65,11 @@ button.close-button {
   color: var(--dark-color);
 }
 
+
+button.close-button.white {
+    color: var(--bright-color);
+}
+
 button.close-button:hover {
   color: var(--primary-color);
 }

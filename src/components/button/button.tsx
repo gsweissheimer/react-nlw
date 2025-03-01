@@ -7,6 +7,7 @@ interface ButtonProps {
     children: React.ReactNode;
     onclick?: () => void;
     submitButton?: boolean;
+    className?: string;
 }
 
 const buttonTypes: Record<string, string> = {
@@ -16,7 +17,7 @@ const buttonTypes: Record<string, string> = {
     close: "close-button",
   };
 
-const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton = false }) => {
+const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton = false, className = '' }) => {
 
     const getClassName = (type?: string | null) =>
         clsx(buttonTypes[type || "primary"] || type);
@@ -24,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton =
   return (
     <button
       type={submitButton ? 'submit' : 'button'}
-      className={getClassName(type)}
+      className={`${getClassName(type)} ${className}`}
       onClick={onclick} >
         {children ?? 'Enviar'}
     </button>
