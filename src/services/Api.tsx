@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 // Criação de uma instância do Axios
 const api = axios.create({
-    baseURL: 'http://localhost:3001/api/miau', // Coloque sua URL base aqui
+    baseURL: 'http://localhost:3001/miau', // Coloque sua URL base aqui
 });
 
 // Adicionando o token Bearer automaticamente

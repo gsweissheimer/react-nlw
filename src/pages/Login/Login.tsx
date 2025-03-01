@@ -29,12 +29,12 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3001/api/au/login', {
+            const response = await axios.post('http://localhost:3001/au/login', {
                 username,
                 password
             });
             
-            const tokenWithoutBearer = response.data.token.token.replace('Bearer ', '');
+            const tokenWithoutBearer = response.data.token.replace('Bearer ', '');
             setToken(tokenWithoutBearer)
             setTokenCookie(tokenWithoutBearer);
             setMessage('Login bem-sucedido!');

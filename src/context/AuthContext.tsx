@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, [token]);
 
     const fetchUserData = async (token: string): Promise<void> => {
-        const response = await fetch('/api/user', {
+        const response = await fetch('/user', {
             headers: { Authorization: `Bearer ${token}` }
         });
         if (response.ok) {
