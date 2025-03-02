@@ -10,6 +10,7 @@ const PetAction: React.FC<PetActionProps> = ({ User }) => {
 
     return (
         <div className='pet-action'>
+            <Button type='secondary'>Personalizado</Button>
             <Button type='primary'>Vomito</Button>
             <Button type='primary'>Bola de pelos</Button>
         </div>

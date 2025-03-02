@@ -49,19 +49,21 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
             <>
               <div className="dashboard">
 
-                <div className="dash-box half">
+                <div className="dash-box full pet-box">
 
                   <HighlightText type='primary'>{ Pet.name }</HighlightText>
-
-                  <div className='pet-info'>
-                    <Text type='secondary' className='no-margin'>{ Pet.type }</Text>
-                    <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
-                    <Text type='secondary' className='no-margin'>{ Pet.microchip ? 'Com chip' : 'Sem chip' }</Text>
-                  </div>
+                  <Text type='secondary' className='no-margin'>{ Pet.type }</Text>
+                  <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
+                  <Text type='secondary' className='no-margin'>{ Pet.microchip ? 'Com chip' : 'Sem chip' }</Text>
 
                 </div>
 
-                <Events></Events>
+                <div className="dash-box half">
+                  <Events></Events>
+                </div>
+                <div className="dash-box half">
+                  <Events></Events>
+                </div>
 
                 <div className="dash-box full">
                   <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear} />

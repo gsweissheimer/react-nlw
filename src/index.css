@@ -157,9 +157,16 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px var(--dark-shadow-color);
-    width: 100%; 
+    width: 100%;
 }
-
+.dash-box.pet-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 1rem;
+}
 
 .dash-box.full {
   width: 100vw;  

@@ -22,6 +22,11 @@ const Header: React.FC<HeaderProps> = ({ token, pageTitle }) => {
                         <Link to={`/logout`}>Logout</Link>
                     </li>
                 )}
+                {!token && (
+                    <li className="logout-link">
+                        <Link to={`/login`}>Login</Link>
+                    </li>
+                )}
             </ul>
         </header>
     );

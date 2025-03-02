@@ -5,9 +5,10 @@ import "./button.css";
 interface ButtonProps {
     type?: string | null;
     children: React.ReactNode;
-    onclick?: () => void | React.FormEvent<HTMLFormElement>;
+    onclick?: (() => void) | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void);
     submitButton?: boolean;
     className?: string;
+    dataEventValue?: string;
 }
 
 const buttonTypes: Record<string, string> = {
@@ -17,7 +18,7 @@ const buttonTypes: Record<string, string> = {
     close: "close-button",
   };
 
-const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton = false, className = '' }) => {
+const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton = false, className = '',dataEventValue }) => {
 
     const getClassName = (type?: string | null) =>
         clsx(buttonTypes[type || "primary"] || type);
@@ -26,7 +27,8 @@ const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton =
     <button
       type={submitButton ? 'submit' : 'button'}
       className={`${getClassName(type)} ${className}`}
-      onClick={onclick} >
+      onClick={onclick}
+      data-event-value={dataEventValue} >
         {children ?? 'Enviar'}
     </button>
   );
