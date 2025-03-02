@@ -1,7 +1,9 @@
 export interface Pet {
-  id: string;
+  id?: string;
   name: string;
   type: string;
-  birth_date: string;
-  chip: boolean;
+  breedId: string;
+  tutorId: string;
+  birthDate: string;
+  microchip: boolean;
 }

@@ -2,36 +2,32 @@ import React from 'react';
 
 import HighlightText from 'components/highlightText/highlightText';
 
-interface InputProps {
+interface DatePickerProps {
   label: string;
   value: string;
   name?: string;
   onChange:  (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  type?: string;
   error?: string;
 }
 
-const Input: React.FC<InputProps> = ({ label, name, value, onChange, placeholder, type = 'text', error }) => {
+const DatePicker: React.FC<DatePickerProps> = ({ label, value, name, onChange, error }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e);
   };
 
   return (
-    <div className="input-container form-input-container">
+    <div className="date-picker-container form-input-container">
       <HighlightText type='headline' className='white-title'>{label}</HighlightText>
       <input
-        type={type}
-        id={label}
-        name={name}
+        type="date"
         value={value}
+        name={name}
         onChange={handleChange}
-        placeholder={placeholder}
-        className={`input ${error ? 'input-error' : ''}`}
+        className={`date-picker ${error ? 'date-picker-error' : ''}`}
       />
       {error && <span className="error-message">{error}</span>}
     </div>
   );
 };
 
-export default Input;
+export default DatePicker;

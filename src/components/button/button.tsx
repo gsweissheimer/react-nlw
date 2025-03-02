@@ -5,7 +5,7 @@ import "./button.css";
 interface ButtonProps {
     type?: string | null;
     children: React.ReactNode;
-    onclick?: () => void;
+    onclick?: () => void | React.FormEvent<HTMLFormElement>;
     submitButton?: boolean;
     className?: string;
 }

@@ -28,7 +28,7 @@ const UserHome: React.FC<UserHomeProps> = ({ User }) => {
 
           <div className="dash-box full">
             { User.pets && (
-              <DashboardPetCard Pets={User.pets} Family={User.family} />
+              <DashboardPetCard user={User} />
             ) }
           </div>
 

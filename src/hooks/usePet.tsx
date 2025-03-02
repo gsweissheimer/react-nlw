@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import service from '../services/Pet';
+import { Pet } from 'types';
 
 export function usePet() {
 
@@ -15,11 +16,16 @@ export function usePet() {
         service.getPets({id: params.id, callback: SetPets});
     }
 
+    const insertPet = async (params: { pet: Pet }) => {
+        await service.insertPet({pet: params.pet, callback: SetPet});
+    }
+
     return {
             Pet,
             getPet,
             Pets,
-            getPets
+            getPets,
+            insertPet
         }
     
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Pet, Family } from "../../types/index";
+import { Pet, User } from "../../types/";
 import { FaCat } from "react-icons/fa";
 
 import Modal from "../modal/modal";
@@ -11,15 +11,26 @@ import PetForm from 'components/petForm/petForm';
 import HighlightText from 'components/highlightText/highlightText';
 
 interface DashboardPetCardProps {
-  Pets: Pet[];
-  Family?: Family;
+  user: User 
 }
 
-const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ Pets, Family }) => {
+const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const allPets = [...Pets, ...(Family?.users.flatMap(user => user.pets) || [])];
+  const allPets = [...user.pets, ...(user.family?.users.flatMap(user => user.pets) || [])];
+
+  const attachPet = (pet: Pet, tutorId: string) => {
+    if (tutorId === user.tutorId) {
+      user.pets.push(pet);
+    } else {
+      user.family?.users.forEach(user => {
+        if (user.tutorId === tutorId) {
+          user.pets.push(pet);
+        }
+      });
+    }
+  }
 
   return (
     <div className='pet-main'>
@@ -41,7 +52,7 @@ const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ Pets, Family }) => 
       <Button onclick={() => setIsOpen(true)} type='primary'>Adicionar Pet</Button>
 
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <PetForm />
+        <PetForm user={user} onclose={() => setIsOpen(false)} setnewpet={attachPet} />
       </Modal>
 
     </div>

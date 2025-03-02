@@ -1,3 +1,4 @@
+import { Pet } from 'types';
 import api from './Api';
 
 const petService = {
@@ -9,7 +10,14 @@ const petService = {
         });
     },
     getPets: (params: { id: string, callback: (data: any) => void }) => {
-        api.get(`/pets/${params.id}`).then((response) => {
+        api.get(`/pet/add`).then((response) => {
+            params.callback(response.data);
+        }).catch((error) => {
+            console.log(error);
+        });
+    },
+    insertPet: async (params: { pet: Pet, callback: (data: any) => void }) => {
+        api.post('/pet/add', params.pet).then((response) => {
             params.callback(response.data);
         }).catch((error) => {
             console.log(error);

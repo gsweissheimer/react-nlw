@@ -55,8 +55,8 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
 
                   <div className='pet-info'>
                     <Text type='secondary' className='no-margin'>{ Pet.type }</Text>
-                    <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birth_date) }</Text>
-                    <Text type='secondary' className='no-margin'>{ Pet.chip ? 'Com chip' : 'Sem chip' }</Text>
+                    <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
+                    <Text type='secondary' className='no-margin'>{ Pet.microchip ? 'Com chip' : 'Sem chip' }</Text>
                   </div>
 
                 </div>

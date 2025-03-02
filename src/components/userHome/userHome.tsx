@@ -41,7 +41,7 @@ const actions = [
       <HighlightText type='primary'>{User.name}</HighlightText>
 
       { User.pets && (
-        <DashboardPetCard Pets={User.pets} Family={User.family} />
+        <DashboardPetCard user={User} />
       )}
 
       <div className="dash-box full">
