@@ -18,8 +18,6 @@ interface UserHomeProps {
 
 const UserHome: React.FC<UserHomeProps> = ({ User }) => {
 
-  console.log(User);
-
 const notifications = ["Consulta da Quinn", "Aniversário do Samuel"];
 const currentDate = new Date();
 const _month = currentDate.getMonth() + 1;
