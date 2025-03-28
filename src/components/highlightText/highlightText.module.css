@@ -1,19 +1,20 @@
-.highlight-text {
+/* highlightText.module.css */
+.highlightText {
     margin: 0;
     padding: 0;
-    display: contents;
+    display: block;
 
   }
   
-  .highlight-text.primary {
+  .highlightText.primary {
     color: var(--dark-color);
     font-weight: 500;
     font-size: 2rem;
     line-height: 2rem;
-    margin: 0 0 2rem;
+    margin: 0 0 1rem;
   }
   
-  .highlight-text.secondary {
+  .highlightText.secondary {
     color: var(--dark-color);
     font-weight: 400;
     font-size: 1.5rem;
@@ -21,7 +22,7 @@
     margin: 0 0 1.5rem;
   }
   
-  .highlight-text.headline span {
+  .highlightText.headline span {
     color: var(--dark-color);
     font-weight: 200;
     font-size: 1.2rem;

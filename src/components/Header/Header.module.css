@@ -1,5 +1,5 @@
-/* Estilização do Header */
-.top-bar {
+
+.topbar {
     display: flex;
     box-sizing: border-box;
     justify-content: space-between;
@@ -11,15 +11,18 @@
     font-family: Arial, sans-serif;
 }
 
-/* Estilização do título */
-.top-bar h1, .top-bar h2 {
+.topbar a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.topbar h1, .topbar h2 {
     margin: 0;
     font-size: 1.8rem;
     color: var(--bright-color);
 }
 
-/* Estilização da lista */
-.top-bar ul {
+.topbar ul {
     list-style: none;
     display: flex;
     gap: 15px;
@@ -27,23 +30,20 @@
     padding: 0;
 }
 
-
-/* Estilização do logout (opcional) */
-.top-bar ul li.logout-link a {
+.logoutLink a {
     color: var(--secondary-color);
 }
 
-.top-bar ul li.logout-link a:hover {
+.logoutLink a:hover {
     color: var(--secondary-color);
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
-    .top-bar {
+    .topbar {
         text-align: center;
     }
 
-    .top-bar ul {
+    .topbar ul {
         margin-top: 10px;
         flex-direction: column;
         gap: 10px;
@@ -57,8 +57,4 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     gap: 12px;
-}
-.top-bar a {
-    color: var(--primary-color);
-    text-decoration: none;
 }

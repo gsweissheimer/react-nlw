@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "components/button/button";
 import Text from "components/text/text";
-import "./notificationBanner.css"; 
+import style from "./notificationBanner.module.css"; 
 
 interface NotificationBannerProps {
   notifications: string[];
@@ -13,8 +13,8 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ notifications }
   if (!visible || notifications.length === 0) return null;
 
   return (
-    <div className="notification-banner">
-      <div className="notification-content">
+    <div className={style.notificationBanner}>
+      <div className={style.notificationContent}>
         <ul>
           {notifications.map((notification, index) => (
             <li key={index}>

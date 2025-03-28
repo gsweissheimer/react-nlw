@@ -1,7 +1,0 @@
-.dashboard-container {
-    flex: 1;
-    padding: 2rem;
-    overflow-y: auto;
-    background-color: var(--bright-color);
-}
-  

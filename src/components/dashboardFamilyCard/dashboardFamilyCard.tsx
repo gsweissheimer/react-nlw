@@ -1,7 +1,7 @@
 import React from 'react';
 import { Family } from "../../types/index";
 
-import './dashboardFamilyCard.css';
+import style from './dashboardFamilyCard.module.css';
 import HighlightText from 'components/highlightText/highlightText';
 
 interface DashboardFamilyCardProps {
@@ -11,11 +11,11 @@ interface DashboardFamilyCardProps {
 const DashboardFamilyCard: React.FC<DashboardFamilyCardProps> = ({ Family }) => {
 
   return (
-    <div className='pet-main'>
+    <div className={style.familyMain}>
 
       <HighlightText type='secondary'>{ Family.name }</HighlightText>
 
-      <div className='pet-cards'>
+      <div className={style.familyCards}>
 
         { Family.users.map((user) => ( 
           <HighlightText key={user.id} type='primary'>{ user.name }</HighlightText>

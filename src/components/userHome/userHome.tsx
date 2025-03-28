@@ -8,7 +8,7 @@ import DashboardPetCard from '../dashboardPetCard/dashboardPetCard';
 import NotificationBanner from "../notificationBanner/notificationBanner";
 import Calendar from '../calendar/Calendar';
 
-import "./userHome.css";
+import styles from "./userHome.module.css";
 import HighlightText from 'components/highlightText/highlightText';
 
 
@@ -32,7 +32,7 @@ const actions = [
 ];
 
   return (
-    <div className="home-content">
+    <div className={styles.homeContent} >
 
       <NotificationBanner notifications={notifications} />
 

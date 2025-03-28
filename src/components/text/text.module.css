@@ -1,0 +1,40 @@
+/* text.module.css */
+.text {
+    margin: 0;
+    padding: 0;
+  }
+  
+.primary {
+  color: var(--dark-color);
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height:  1.3rem;
+  margin: 0 0  1.3rem;
+}
+
+.secondary {
+  color: var(--dark-color);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin: 0 0 1rem;
+}
+
+.headline {
+  color: var(--bright-color);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin: 0 0 1rem;
+}
+
+.legend {
+  color: var(--primary-color);
+  font-weight: 200;
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+  font-style: italic;
+  padding: 0 4px;
+  margin: 0 0 0.7rem;
+}
+  

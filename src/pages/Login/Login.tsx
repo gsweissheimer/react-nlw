@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import LoginAlert from './LoginAlert';
 
-import LoginAlert from './LoginAlert'
-
-import './Login.css'
+import style from './login.module.css';
 import Button from 'components/button/button';
 
 const setTokenCookie = (token: string): void => {
@@ -14,7 +13,6 @@ const setTokenCookie = (token: string): void => {
 };
 
 const background = '/assets/img/cute-pet-collage-isolated.jpg';
-
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -24,7 +22,6 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -33,9 +30,9 @@ const Login = () => {
                 username,
                 password
             });
-            
+
             const tokenWithoutBearer = response.data.token.replace('Bearer ', '');
-            setToken(tokenWithoutBearer)
+            setToken(tokenWithoutBearer);
             setTokenCookie(tokenWithoutBearer);
             setMessage('Login bem-sucedido!');
             navigate('/'); // Redireciona para a página Home ("/")
@@ -49,37 +46,39 @@ const Login = () => {
     };
 
     return (
-        <div className='login-component' style={{ backgroundImage: `url(${background})` }} >
-            <div className='login-modal' >
-                <div className='login-left' style={{ backgroundImage: `url(${background})` }} >
-                    <h1 className='main-title white-title' >Cat Dog ID</h1>
+        <div className={style.loginComponent} style={{ backgroundImage: `url(${background})` }}>
+            <div className={style.loginModal}>
+                <div className={style.loginLeft} style={{ backgroundImage: `url(${background})` }}>
+                    <h1 className={`${style.mainTitle} ${style.whiteTitle}`}>Cat Dog ID</h1>
                     <p>Seu sistema de identificação de gatos e cachorros.</p>
                 </div>
-                <div className='login-right' >
-                    <h2 className='black-title' >Login</h2>
+                <div className={style.loginRight}>
+                    <h2 className={style.blackTitle}>Login</h2>
 
                     <LoginAlert message={message} token={token} />
 
                     <form onSubmit={handleSubmit}>
-                        <div className='input-content' >
+                        <div className={style.inputContent}>
                             <input
                                 type="text"
                                 value={username}
-                                placeholder='Usuário'
+                                placeholder="Usuário"
                                 onChange={(e) => setUsername(e.target.value)}
                                 required
                             />
                         </div>
-                        <div className='input-content' >
+                        <div className={style.inputContent}>
                             <input
                                 type="password"
                                 value={password}
-                                placeholder='Senha'
+                                placeholder="Senha"
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
                         </div>
-                        <Button type='primary' submitButton={true}>Login</Button>
+                        <Button type="primary" submitButton={true}>
+                            Login
+                        </Button>
                     </form>
 
                     {/* remover */}
@@ -90,7 +89,6 @@ const Login = () => {
                         </div>
                     )}
                     {/* remover */}
-
                 </div>
             </div>
         </div>

@@ -1,9 +1,10 @@
-.pet-main h3.title {
+/* dashboardPetCard.module.css */
+.petMain h3.title {
     font-size: 1.5rem;
     line-height: 1.5rem;
     font-weight: 400;
 }
-.pet-cards {
+.petCards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -14,7 +15,7 @@
     margin: 0 0 2rem;
 }
 
-.pet-cards-footer {
+.petCardsFooter {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -24,7 +25,7 @@
     margin-top: 2rem;
 }
 
-.card-info {
+.cardInfo {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -33,7 +34,7 @@
     align-items: stretch;
 }
 
-.card-info p {
+.cardInfo p {
     width: 50%;
     margin: 0;
 }

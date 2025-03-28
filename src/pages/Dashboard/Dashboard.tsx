@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Cookies from 'js-cookie';
 import Header from '../../components/Header/Header';
 
-import './Dashboard.css';
+import style from  './dashboard.module.css';
 
 type DashboardProps = {
   pageTitle?: string,
@@ -12,10 +12,10 @@ type DashboardProps = {
 const Dashboard: React.FC<DashboardProps> = ({ pageTitle, children }) => {
   const token = Cookies.get('catdogtok');
   return (
-    <div className="dashboard-layout">
+    <div className={style.dashboardLayout}>
       <Header token={token} pageTitle={pageTitle} />
-      <div className="main-layout">
-        <main className="dashboard-container">
+      <div className={style.mainLayout}>
+        <main className={style.dashboardContainer}>
           {children}
         </main>
       </div>

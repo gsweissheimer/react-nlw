@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import "./highlightText.css";
+import style from "./highlightText.module.css";
 
 type HighlightTextProps = {
   type: "primary" | "secondary" | "headline";
@@ -16,7 +16,7 @@ const tagMap = {
 const HighlightText = ({ type = "primary", children, className }: HighlightTextProps) => {
   const Tag = tagMap[type];
 
-  const getClassName = (type?: string | null) => clsx("highlight-text", type, className)
+  const getClassName = (type?: string | null) => clsx(style["highlight-text"], style[type || ""], className);
           
 
   return (

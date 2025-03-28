@@ -1,4 +1,5 @@
-button.btn {
+/* button.module.css */
+.btn {
     border-style: none;
     font-size: 1em;
     line-height: 1.5;
@@ -14,32 +15,32 @@ button.btn {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
-button.primary-button {
+.primaryButton {
     background-color: var(--primary-color);
     border-color: var(--bright-color);
     color: var(--bright-color);
 }
 
-button.primary-button:hover {
+.primaryButton:hover {
     background-color: var(--dark-color);
     border-color: var(--bright-color);
     color: var(--primary-color);
 }
 
-button.secondary-button {
+.secondaryButton {
     background: var(--dark-color);
     border-color: var(--bright-color);
     color: var(--primary-color);
 }
 
-button.secondary-button:hover {
+.secondaryButton:hover {
     background-color: var(--primary-color);
     border-color: var(--bright-color);
     color: var(--dark-color);
 }
 
 
-button.circle-button {
+.circleButton {
     width: 50px;
     padding: 12px;
     border-radius: 50%;
@@ -48,13 +49,13 @@ button.circle-button {
     color: white;
 }
 
-button.circle-button:hover {
+.circleButton:hover {
     background-color: var(--dark-color);
     border-color: var(--bright-color);
     color: var(--primary-color);
 }
 
-button.close-button {
+.closeButton {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -66,19 +67,19 @@ button.close-button {
 }
 
 
-button.close-button.white {
+.closeButton.white {
     color: var(--bright-color);
 }
 
-button.close-button:hover {
+.closeButton:hover {
   color: var(--primary-color);
 }
 
-button h1, button h2, button h3, button h4, button h5, button h6 {
+h1, h2, h3, h4, h5, h6 {
     margin: 1rem 0;
 }
 
-button a {
+a {
     color: inherit;
     text-decoration: none;
 }

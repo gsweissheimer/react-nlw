@@ -1,15 +1,17 @@
-.form-input-container {
+.formInputContainer {
     width: 100%;
-
 }
+
 .doubleInputLine {
     display: flex;
     gap: 12px;
 }
-label.checkbox-label {
+
+.checkboxLabel {
     display: inline-block;
 }
-form.form-container {
+
+.formContainer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -20,14 +22,14 @@ form.form-container {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-form.form-container label {
+.formContainer label {
     font-weight: 500;
     color: var(--dark-color);
 }
 
-form.form-container input,
-form.form-container select,
-form.form-container textarea {
+.formContainer input,
+.formContainer select,
+.formContainer textarea {
     width: 100%;
     padding: 0.75rem;
     border: 2px solid var(--primary-color);
@@ -38,22 +40,22 @@ form.form-container textarea {
     transition: border-color 0.15s ease-in-out;
 }
 
-form.form-container input:focus,
-form.form-container select:focus,
-form.form-container textarea:focus {
+.formContainer input:focus,
+.formContainer select:focus,
+.formContainer textarea:focus {
     border-color: var(--bright-color);
     outline: none;
     box-shadow: 0 0 5px var(--primary-color);
 }
 
-form.form-container .checkbox-container,
-form.form-container .radio-container {
+.formContainer .checkboxContainer,
+.formContainer .radioContainer {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-form.form-container button {
+.formContainer button {
     align-self: center;
     width: 100%;
     max-width: 320px;
@@ -64,35 +66,40 @@ form.form-container button {
     transition: all 0.15s ease-in-out;
 }
 
-form.form-container button.primary-button {
+.formContainer .primaryButton {
     background-color: var(--primary-color);
     color: var(--bright-color);
     border: none;
 }
 
-form.form-container button.primary-button:hover {
+.formContainer .primaryButton:hover {
     background-color: var(--dark-color);
     color: var(--primary-color);
 }
 
-form.form-container button.secondary-button {
+.formContainer .secondaryButton {
     background-color: var(--dark-color);
     color: var(--primary-color);
     border: none;
 }
 
-form.form-container button.secondary-button:hover {
+.formContainer .secondaryButton:hover {
     background-color: var(--primary-color);
     color: var(--dark-color);
 }
 
-form.form-container .error-message {
+.formContainer .errorMessage {
     color: red;
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
 
-.checkbox-container input[type="checkbox"] {
+.checkboxContainer input[type="checkbox"] {
     width: auto;
     margin-right: 0.5rem;
+}
+
+.whiteTitle,
+.whiteTitle span {
+  color: white !important;
 }

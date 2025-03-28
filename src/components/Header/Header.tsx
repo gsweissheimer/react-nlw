@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import style from './Header.module.css';
 
 interface HeaderProps {
     token?: string;
@@ -9,8 +9,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ token, pageTitle }) => {
     return (
-        <header className="top-bar">
-            <div className='breadcrumbs'>
+        <header className={style.topbar}>
+            <div className={style.breadcrumbs}>
                 <h1><Link to="/">Dashboard</Link></h1><h2>{pageTitle && ` > ${pageTitle}` }</h2>
             </div>
             <ul>
@@ -18,12 +18,12 @@ const Header: React.FC<HeaderProps> = ({ token, pageTitle }) => {
                     <Link to={`/profile`}>Profile</Link>
                 </li>
                 {token && (
-                    <li className="logout-link">
+                    <li className={style.logoutLink}>
                         <Link to={`/logout`}>Logout</Link>
                     </li>
                 )}
                 {!token && (
-                    <li className="logout-link">
+                    <li className={style.logoutLink}>
                         <Link to={`/login`}>Login</Link>
                     </li>
                 )}

@@ -1,9 +1,10 @@
-.family-main h3.title {
+/* dashboardFamilyCard.module.css */
+.familyMain h3.title {
     font-size: 1.5rem;
     line-height: 1.5rem;
     font-weight: 400;
 }
-.family-cards {
+.familyCards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

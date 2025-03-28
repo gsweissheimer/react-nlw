@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import "./text.css";
+import style from "./text.module.css";
 
 type TextProps = {
   type: "primary" | "secondary" | "headline" | 'legend';
@@ -9,7 +9,7 @@ type TextProps = {
 
 const Text = ({ type = "primary", children, className }: TextProps) => {
 
-  const getClassName = (type?: string | null) => clsx("text", type, className)
+  const getClassName = (type?: string | null) => clsx(style.text, style[type || "primary"], className);
        
   return (
     <p className={getClassName(type)}>

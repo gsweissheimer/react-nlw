@@ -1,0 +1,49 @@
+/* login.module.css */
+:global {
+    :root {
+        --bright-color: #fff;
+        --dark-shadow-color: #333;
+    }
+}
+
+.loginComponent {
+        width: 100vw;
+        height: 100vh;
+        margin: auto;
+        background-size: cover;
+        background-position: center;
+}
+
+.loginModal {
+        display: flex;
+        box-sizing: border-box;
+        width: 75%;
+        margin: 0 auto;
+        max-width: 900px;
+        background: var(--bright-color);
+        border-radius: 0.25rem;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+}
+
+.loginLeft {
+        padding: 60px 16px;
+        width: 40%;
+        background-size: cover;
+        background-position: center;
+        color: var(--bright-color);
+        background-color: var(--dark-shadow-color);
+        background-blend-mode: color;
+}
+
+.loginRight {
+        padding: 60px 16px;
+        width: 60%;
+}
+
+.formAlert {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid green;
+}

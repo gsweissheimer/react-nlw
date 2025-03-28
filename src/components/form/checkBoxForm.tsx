@@ -1,5 +1,5 @@
 import React from 'react';
-import './form.css';
+import style from './form.module.css';
 import HighlightText from 'components/highlightText/highlightText';
 
 interface CheckboxProps {
@@ -15,17 +15,17 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange, error }) 
   };
 
   return (
-    <div className="checkbox-container form-input-container">
+    <div className={`${style.checkboxContainer} ${style.formInputContainer}`}>
       <input
         type="checkbox"
         checked={checked}
         onChange={handleChange}
         className={`checkbox ${error ? 'checkbox-error' : ''}`}
       />
-      <label className="checkbox-label">
-        <HighlightText type='headline' className='white-title'>{label}</HighlightText>
+      <label className={style.checkboxLabel}>
+        <HighlightText type='headline' className={style.whiteTitle}>{label}</HighlightText>
       </label>
-      {error && <span className="error-message">{error}</span>}
+      {error && <span className={style.errorMessage}>{error}</span>}
     </div>
   );
 };

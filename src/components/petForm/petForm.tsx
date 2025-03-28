@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import "./petForm.css";
+import style from "./petForm.module.css";
 import Input from '../form/inputForm';
 import Button from 'components/button/button';
 import HighlightText from 'components/highlightText/highlightText';

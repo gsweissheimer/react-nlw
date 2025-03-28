@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Calendar.css';
+import style from './calendar.module.css';
 import Button from 'components/button/button';
 import HighlightText from 'components/highlightText/highlightText';
 import Text from 'components/text/text';
@@ -70,29 +70,29 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, actions, setMonth, set
     };
     
     return (
-        <div className="calendar">
-            <div className="calendar-header">
-                <Button onclick={goToPreviousMonth} type="circle">{"<"}</Button>
-                <HighlightText type='secondary' className='no-margin'>{`${month} / ${year}`}</HighlightText>
-                <Button onclick={goToNextMonth} type="circle">{">"}</Button>
+        <div className={style.calendar}>
+            <div className={style.calendarHeader}>
+            <Button onclick={goToPreviousMonth} type="circle">{"<"}</Button>
+            <HighlightText type='secondary' className={style.noMargin}>{`${month} / ${year}`}</HighlightText>
+            <Button onclick={goToNextMonth} type="circle">{">"}</Button>
             </div>
 
-            <div className="calendar-grid">
-                {days.map((day, index) => (
-                    <div key={index} className={`calendar-day ${day ? '' : 'empty'} ${actions.some(action => {
-                        const actionDate = new Date(action.date);
-                        return actionDate.getDate() === day && actionDate.getMonth() === month - 1 && actionDate.getFullYear() === year;
-                    }) ? 'has-actions' : ''}`}>
-                        {day && (
-                            <>
-                                <Text type='primary'>{day}</Text>
-                                <div className="actions-for-day">
-                                    {renderEventsForDay(day)}
-                                </div>
-                            </>
-                        )}
+            <div className={style.calendarGrid}>
+            {days.map((day, index) => (
+                <div key={index} className={`${style.calendarDay} ${day ? '' : style.empty} ${actions.some(action => {
+                const actionDate = new Date(action.date);
+                return actionDate.getDate() === day && actionDate.getMonth() === month - 1 && actionDate.getFullYear() === year;
+                }) ? style.hasActions : ''}`}>
+                {day && (
+                    <>
+                    <Text type='primary'>{day}</Text>
+                    <div className={style.actionsForDay}>
+                        {renderEventsForDay(day)}
                     </div>
-                ))}
+                    </>
+                )}
+                </div>
+            ))}
             </div>
         </div>
     );

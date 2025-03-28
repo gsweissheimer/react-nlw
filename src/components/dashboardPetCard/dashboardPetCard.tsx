@@ -5,7 +5,7 @@ import { FaCat } from "react-icons/fa";
 
 import Modal from "../modal/modal";
 
-import './dashboardPetCard.css';
+import style from './dashboardPetCard.module.css';
 import Button from 'components/button/button';
 import PetForm from 'components/petForm/petForm';
 import HighlightText from 'components/highlightText/highlightText';
@@ -33,11 +33,11 @@ const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user }) => {
   }
 
   return (
-    <div className='pet-main'>
+    <div className={style.petMain}>
 
       <HighlightText type='secondary'>Meus Pets</HighlightText>
 
-      <div className='pet-cards'>
+      <div className={style.petCards}>
 
         { ( allPets && allPets.map((Pet) => (
           <Button key={Pet.id} type='secondary' onclick={() => console.log('Pet', Pet)}>
