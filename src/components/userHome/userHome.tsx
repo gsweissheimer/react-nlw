@@ -29,18 +29,15 @@ const [month, setMonth] = useState(_month);
 const { Events, getEventsByTutorId } = useEvent();
 
 useEffect(() => {
-  if(User != null && Events == null) getEventsByTutorId({ id: User.id }).then((events) => {
-    console.log(events);
-  });
+  if(User != null && Events == null) getEventsByTutorId({ id: User.tutorId });
+  console.log(Events);
 }, [User, Events, getEventsByTutorId]);
 
 
-const actions = [
-  { date: '2025-02-03', description: 'Vomitou' },
-  { date: '2025-02-05', description: 'Não quis comer' },
-  { date: '2025-02-10', description: 'Está Agitado' },
-  { date: '2025-02-10', description: 'Vomitou' }, // Duas ações no mesmo dia
-];
+const actions = Events?.map(event => ({
+  date: event.eventDate || "",
+  description: event.name || ""
+})) || [];
 
   return (
     <div className={styles.homeContent} >

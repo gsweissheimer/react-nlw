@@ -27,7 +27,7 @@ const generateDays = (year: number, month: number) => {
 interface CalendarProps {
     year: number;
     month: number;
-    actions: { date: string; description: string }[];
+    actions: { date: string; description: string }[] | [];
     setMonth: (month: number) => void;
     setYear: (year: number) => void;
 }
