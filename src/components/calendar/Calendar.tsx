@@ -9,6 +9,7 @@ const generateDays = (year: number, month: number) => {
     const daysInMonth = new Date(year, month, 0).getDate(); // Número de dias no mês
     const firstDay = new Date(year, month - 1, 1).getDay(); // Dia da semana em que o mês começa
     const days = [];
+    
 
     // Preenche os dias antes do primeiro dia com vazios
     for (let i = 0; i < firstDay; i++) {
