@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { User } from '../../types';
 
@@ -10,6 +10,7 @@ import Calendar from '../calendar/Calendar';
 
 import styles from "./userHome.module.css";
 import HighlightText from 'components/highlightText/highlightText';
+import { useEvent } from 'hooks/useEvent';
 
 
 interface UserHomeProps {
@@ -24,6 +25,16 @@ const _month = currentDate.getMonth() + 1;
 const _year = currentDate.getFullYear();
 const [year, setYear] = useState(_year);
 const [month, setMonth] = useState(_month);
+
+const { Events, getEventsByTutorId } = useEvent();
+
+useEffect(() => {
+  if(User != null && Events == null) getEventsByTutorId({ id: User.id }).then((events) => {
+    console.log(events);
+  });
+}, [User, Events, getEventsByTutorId]);
+
+
 const actions = [
   { date: '2025-02-03', description: 'Vomitou' },
   { date: '2025-02-05', description: 'Não quis comer' },

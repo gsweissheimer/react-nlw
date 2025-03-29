@@ -42,6 +42,16 @@
         width: 60%;
 }
 
+.whiteTitle {
+        color: white;
+}
+
+.mainTitle {
+  margin-bottom: .5em;
+  line-height: 1.3;
+  font-size: 2rem;
+}
+
 .formAlert {
         margin-top: 20px;
         padding: 10px;

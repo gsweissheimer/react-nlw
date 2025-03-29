@@ -8,7 +8,15 @@ const eventService = {
         }).catch((error) => {
             console.log(error);
         });
+    },
+    getEventsByTutorId: async (params: { id: string, callback: (data: any) => void }) => {
+        api.get(`/event/${params.id}`).then((response) => {
+            params.callback(response.data.data);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 };
+
 
 export default eventService;

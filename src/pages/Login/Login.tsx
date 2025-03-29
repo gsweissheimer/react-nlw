@@ -50,7 +50,7 @@ const Login = () => {
             <div className={style.loginModal}>
                 <div className={style.loginLeft} style={{ backgroundImage: `url(${background})` }}>
                     <h1 className={`${style.mainTitle} ${style.whiteTitle}`}>Cat Dog ID</h1>
-                    <p>Seu sistema de identificação de gatos e cachorros.</p>
+                    <p className={` ${style.whiteTitle}`}>Seu sistema de identificação de gatos e cachorros.</p>
                 </div>
                 <div className={style.loginRight}>
                     <h2 className={style.blackTitle}>Login</h2>
