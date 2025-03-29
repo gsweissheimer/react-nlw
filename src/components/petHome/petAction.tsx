@@ -9,31 +9,13 @@ interface PetActionProps {
 
 const PetAction: React.FC<PetActionProps> = ({ Pet }) => {
 
-    const { insertEvent } = useEvent()
-
-    const handleEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
-        const eventValue: Event = {
-            name: event.currentTarget.textContent,
-            value: event.currentTarget.dataset.eventValue,
-            type: 'event',
-            entityId: Pet?.id,
-            entityType: 'pet',
-            eventDate: new Date().toISOString()
-        }
-        if (Pet) {
-            insertEvent({ event: eventValue }).then(() => {
-                console.log('Evento inserido com sucesso');
-            }).catch((error) => {
-                console.error('Erro ao inserir evento:', error);
-            });
-        }
-    };
+    const { handleEvent } = useEvent()
 
     return (
         <div className='pet-action'>
-            <Button type='secondary' onclick={e => handleEvent(e)}>Personalizado</Button>
+            <Button type='secondary' onclick={e => handleEvent(e, Pet!.id!, 'pet')}>Personalizado</Button>
             {EventActions.map((action, index) => (
-                <Button dataEventValue={action.value} key={index} type='primary' onclick={e => handleEvent(e)}>{action.label}</Button>
+                <Button dataEventValue={action.value} key={index} type='primary' onclick={e => handleEvent(e, Pet!.id!, 'pet')}>{action.label}</Button>
             ))}
         </div>
     );
