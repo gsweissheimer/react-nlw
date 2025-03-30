@@ -26,24 +26,40 @@ const _year = currentDate.getFullYear();
 const [year, setYear] = useState(_year);
 const [month, setMonth] = useState(_month);
 
-const { Events, getEventsByTutorId } = useEvent();
+const { Events, getEventsByTutorId, SetEvents, handleEvent } = useEvent();
 
-useEffect(() => {
-  if(User != null && Events == null) getEventsByTutorId({ id: User.tutorId });
-}, [User, Events, getEventsByTutorId]);
-
-
-const actions = Events?.map(event => ({
+const [actions, setActions] = useState(() => 
+  Events?.map(event => ({
   date: event.eventDate || "",
   description: event.name || ""
-})) || [];
+  })) || []
+);
+
+useEffect(() => {
+  if (User?.tutorId) {
+      getEventsByTutorId({ id: User.tutorId });
+  }
+}, [User?.tutorId]);
+
+useEffect(() => {
+  console.log('atualizo')
+  if (Events) {
+    console.log('atualizo', Events)
+    setActions(
+      Events.map(event => ({
+        date: event.eventDate || "",
+        description: event.name || ""
+      }))
+    );
+  }
+}, [Events]);
 
   return (
     <div className={styles.homeContent} >
 
       {/* <NotificationBanner notifications={notifications} /> */}
 
-      <EventsActions User={User} entity='family' />
+      <EventsActions User={User} entity='family' _setEvents={SetEvents} _handleEvent={handleEvent} />
 
       <HighlightText type='primary'>{User.name}</HighlightText>
 

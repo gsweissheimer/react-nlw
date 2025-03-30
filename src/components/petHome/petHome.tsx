@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from '../calendar/Calendar';
 import { Pet } from "../../types";
 
 import EventsActions from '../eventsActions/eventsActions';
 
 import HighlightText from '../highlightText/highlightText';
-import Events from '../events/events'
+// import Events from '../events/events'
 import Text from '../text/text';
+import { useEvent } from 'hooks/useEvent';
 
 interface PetHomeProps {
   Pet?: Pet; 
@@ -32,18 +33,39 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
     const _year = currentDate.getFullYear();
     const [year, setYear] = useState(_year);
     const [month, setMonth] = useState(_month);
-    const actions = [
-      { date: '2024-12-03', description: 'Vomitou' },
-      { date: '2024-12-05', description: 'Não quis comer' },
-      { date: '2024-12-10', description: 'Está Agitado' },
-      { date: '2024-12-10', description: 'Vomitou' }, // Duas ações no mesmo dia
-    ];
-  
+    
+    const { Events, getEventsByPetId, SetEvents, handleEvent } = useEvent();
+    
+    const [actions, setActions] = useState(() => 
+      Events?.map(event => ({
+      date: event.eventDate || "",
+      description: event.name || ""
+      })) || []
+    );
+    
+    useEffect(() => {
+      if (Pet?.id) {
+        getEventsByPetId({ id: Pet?.id });
+      }
+    }, [Pet?.id]);
+    
+    useEffect(() => {
+      console.log('atualizo')
+      if (Events) {
+        console.log('atualizo', Events)
+        setActions(
+          Events.map(event => ({
+            date: event.eventDate || "",
+            description: event.name || ""
+          }))
+        );
+      }
+    }, [Events]);
   
     return (
       <div className="pet-content">
         
-        <EventsActions Pet={Pet} entity='pet' />
+        <EventsActions Pet={Pet} entity='pet' _setEvents={SetEvents} _handleEvent={handleEvent}/>
 
           {Pet && (
             <>
@@ -58,12 +80,12 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
 
                 </div>
 
-                <div className="dash-box half">
+                {/* <div className="dash-box half">
                   <Events></Events>
                 </div>
                 <div className="dash-box half">
                   <Events></Events>
-                </div>
+                </div> */}
 
                 <div className="dash-box full">
                   <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear} />

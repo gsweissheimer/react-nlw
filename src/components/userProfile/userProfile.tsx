@@ -4,7 +4,7 @@ import DashboardFamilyCard from '../dashboardFamilyCard/dashboardFamilyCard';
 
 import { User } from '../../types';
 
-import Events from '../events/events'
+// import Events from '../events/events'
 import HighlightText from 'components/highlightText/highlightText';
 
 interface UserHomeProps {
@@ -24,7 +24,7 @@ const UserHome: React.FC<UserHomeProps> = ({ User }) => {
             ) }
           </div>
           
-          <Events></Events>
+          {/* <Events></Events> */}
 
           <div className="dash-box full">
             { User.pets && (

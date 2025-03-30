@@ -1,19 +1,28 @@
-import { Event } from 'types';
+
+import { Event } from '../types/';
 import api from './Api';
 
 const eventService = {
-    insertEvent: async (params: { event: Event, callback: (data: any) => void }) => {
-        api.post('/event/add', params.event).then((response) => {
+    insertEvent: async (params: { event: Event }): Promise<Event> => {
+        try {
+            const response = await api.post('/event/add', params.event);
             const event = params.event;
             event.id = response.data.data;
-
-            params.callback(event);
+            return event;
+        } catch (error) {
+            console.log(error);
+            throw error; // Re-throw the error to ensure the function always returns or throws
+        }
+    },
+    getEventsByTutorId: async (params: { id: string, callback: (data: any) => void }) => {
+        api.get(`/event/${params.id}`).then((response) => {
+            params.callback(response.data.data);
         }).catch((error) => {
             console.log(error);
         });
     },
-    getEventsByTutorId: async (params: { id: string, callback: (data: any) => void }) => {
-        api.get(`/event/${params.id}`).then((response) => {
+    getEventsByPetId: async (params: { id: string, callback: (data: any) => void }) => {
+        api.get(`/event/pet/${params.id}`).then((response) => {
             params.callback(response.data.data);
         }).catch((error) => {
             console.log(error);

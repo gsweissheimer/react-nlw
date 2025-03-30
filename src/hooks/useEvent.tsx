@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import service from '../services/Event';
-import { Event } from 'types';
+import { Event } from '../types/';
 
 export function useEvent() {
 
@@ -9,11 +9,23 @@ export function useEvent() {
     const [ Events, SetEvents ] = useState<Event[] | null>(null);
 
     const insertEvent = async (params: { event: Event }) => {
-        await service.insertEvent({event: params.event, callback: SetEvent});
-    }
+        try {
+            const newEvent = await service.insertEvent({ event: params.event });
+    
+            if (newEvent) {
+                return newEvent;
+            }
+        } catch (error) {
+            console.error("Erro ao inserir evento:", error);
+        }
+    };
 
     const getEventsByTutorId = async (params: { id: string }) => {
         await service.getEventsByTutorId({id: params.id, callback: SetEvents});
+    }
+
+    const getEventsByPetId = async (params: { id: string }) => {
+        await service.getEventsByPetId({id: params.id, callback: SetEvents});
     }
 
     const handleEvent = (event: React.MouseEvent<HTMLButtonElement>, entityId: string, entityType: string) => {
@@ -26,8 +38,10 @@ export function useEvent() {
                 eventDate: new Date().toISOString()
             }
             
-            insertEvent({ event: eventValue }).then((response) => {
+            insertEvent({ event: eventValue }).then((newEvent) => {
                 console.log('Evento inserido com sucesso');
+                console.log(newEvent);
+                if(newEvent) SetEvents(prevEvents => [...(prevEvents || []), newEvent]);
             }).catch((error) => {
                 console.error('Erro ao inserir evento:', error);
             });
@@ -40,6 +54,7 @@ export function useEvent() {
             SetEvents,
             insertEvent,
             getEventsByTutorId,
+            getEventsByPetId,
             handleEvent
         }
     
