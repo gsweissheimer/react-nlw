@@ -1,4 +1,7 @@
 /* dashboardPetCard.module.css */
+.petMain {
+    margin-bottom: 2rem;
+}
 .petMain h3.title {
     font-size: 1.5rem;
     line-height: 1.5rem;
