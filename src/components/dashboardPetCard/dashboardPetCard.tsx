@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Pet, User } from "../../types/";
-import { FaCat } from "react-icons/fa";
+import { FaCat, FaTrashAlt, FaRegEdit } from "react-icons/fa";
 
 import Modal from "../modal/modal";
 
-import style from './dashboardPetCard.module.css';
+import styles from './dashboardPetCard.module.css';
 import Button from 'components/button/button';
 import PetForm from 'components/petForm/petForm';
 import HighlightText from 'components/highlightText/highlightText';
 
 interface DashboardPetCardProps {
-  user: User 
+  user: User
+  isProfile?: boolean
 }
 
-const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user }) => {
+const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user, isProfile = false }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,18 +34,28 @@ const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user }) => {
   }
 
   return (
-    <div className={style.petMain}>
+    <div className={styles.petMain}>
 
       <HighlightText type='secondary'>Meus Pets</HighlightText>
 
-      <div className={style.petCards}>
+      <div className={styles.petCards}>
 
         { ( allPets && allPets.map((Pet) => (
-          <Button key={Pet.id} type='secondary' onclick={() => console.log('Pet', Pet)}>
-              <Link to={`/pet/${Pet.id}`}>
-                <h2>{ Pet.name } <FaCat /></h2>
-              </Link>
-          </Button>
+          <div className={styles.buttonBox} key={Pet.id}>
+            <Button type='secondary' onclick={() => console.log('Pet', Pet)}>
+                <Link to={`/pet/${Pet.id}`}>
+                  <h2>{ Pet.name } <FaCat /></h2>
+                </Link>
+            </Button>
+            {isProfile && <div className={styles.buttonOptions}>
+              <Button type='circleDark' className={styles.closeButton} onclick={() => console.log('Fechar')}>
+                <FaTrashAlt />
+              </Button>
+              <Button type='circleDark' className={styles.closeButton} onclick={() => console.log('Fechar')}>
+                <FaRegEdit />
+              </Button>
+            </div>}
+          </div>
         )) ) }
 
       </div>

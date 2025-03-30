@@ -41,12 +41,30 @@
 
 
 .circleButton {
-    width: 50px;
     padding: 12px;
     border-radius: 50%;
     
     background-color: var(--primary-color);
     color: white;
+
+    width: fit-content;
+    line-height: 1em;
+}
+.circleButtonDark {
+    padding: 12px;
+    border-radius: 50%;
+    
+    background-color: var(--dark-color);
+    color:  var(--bright-color);
+
+    width: fit-content;
+    line-height: 1em;
+}
+
+.circleButtonDark:hover {
+    background-color: var(--bright-color);
+    border-color: var(--dark-color);
+    color: var(--primary-color);
 }
 
 .circleButton:hover {

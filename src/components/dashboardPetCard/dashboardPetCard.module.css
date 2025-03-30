@@ -38,3 +38,46 @@
     width: 50%;
     margin: 0;
 }
+
+.buttonBox {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttonOptions {
+    position: absolute;
+    left: 99%;
+    padding: 6px;
+    transform: translateX(-100%);
+    color: white;
+    margin-left: 12px;
+    height: 0%;
+    z-index: -1;
+}
+
+.buttonBox:hover .buttonOptions {
+    position: absolute;
+    display: flex;
+    left: 100%;
+    transform: translateX(-100%);
+    width: fit-content;
+    height: fit-content;
+    bottom: 100%;
+    padding: 0 0 3px;
+    color: white;
+    z-index: 9;
+    transition: all 0.3s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin: 0;
+}
+
+
+.buttonOptions button + button {
+    margin-left : 12px;
+}

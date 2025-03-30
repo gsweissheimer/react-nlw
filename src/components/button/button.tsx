@@ -15,6 +15,7 @@ const buttonTypes: Record<string, string> = {
   primary: `${style.btn} ${style.primaryButton}`,
   secondary: `${style.btn} ${style.secondaryButton}`,
   circle: `${style.btn} ${style.circleButton}`,
+  circleDark: `${style.btn} ${style.circleButtonDark}`,
   close: style.closeButton,
 };
 
