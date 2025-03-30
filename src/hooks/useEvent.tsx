@@ -26,7 +26,7 @@ export function useEvent() {
                 eventDate: new Date().toISOString()
             }
             
-            insertEvent({ event: eventValue }).then(() => {
+            insertEvent({ event: eventValue }).then((response) => {
                 console.log('Evento inserido com sucesso');
             }).catch((error) => {
                 console.error('Erro ao inserir evento:', error);

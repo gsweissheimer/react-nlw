@@ -1,14 +1,15 @@
 export type EventAction = {
     label: string;
     value: string;
+    entity: string;
 };
 
 export const EventActions: EventAction[] = [
-    { label: 'Vomitou', value: 'vomitou' },
-    { label: 'Não quis comer', value: 'nao-quis-comer' },
-    { label: 'Está Agitado', value: 'esta-agitado' },
-    { label: 'Bola de pelos', value: 'bola-de-pelos' },
-    { label: 'Está Amoado', value: 'esta-amoado' }
+    { label: 'Vomito', value: 'vomitou', entity: "all" },
+    { label: 'Não quis comer', value: 'nao-quis-comer', entity: "pet" },
+    { label: 'Agitado', value: 'esta-agitado', entity: "pet" },
+    { label: 'Bola de pelos', value: 'bola-de-pelos', entity: "all" },
+    { label: 'Amoado', value: 'esta-amoado', entity: "pet" },
 ];
 
 export interface Event {

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Calendar from '../calendar/Calendar';
 import { Pet } from "../../types";
 
-import PetAction from './petAction';
+import EventsActions from '../eventsActions/eventsActions';
 
 import HighlightText from '../highlightText/highlightText';
 import Events from '../events/events'
@@ -43,7 +43,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
     return (
       <div className="pet-content">
         
-        <PetAction Pet={Pet} />
+        <EventsActions Pet={Pet} entity='pet' />
 
           {Pet && (
             <>

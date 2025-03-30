@@ -1,0 +1,15 @@
+/* eventsActions.module.css */
+.action {
+    display: flex; 
+    gap: 15px; 
+    flex-wrap: wrap; 
+    justify-content: left; 
+    margin: 0 0 1.5rem; 
+  }
+  
+  @media (max-width: 768px) {
+    .action {
+        flex-direction: column; 
+        align-items: center; 
+    }
+  }

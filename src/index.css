@@ -210,22 +210,6 @@ body {
   align-items: flex-start;
 }
 
-.pet-action {
-  display: flex; 
-  gap: 15px; 
-  flex-wrap: wrap; 
-  justify-content: left; 
-  margin: 0 0 1.5rem; 
-}
-
-@media (max-width: 768px) {
-  .pet-action {
-      flex-direction: column; 
-      align-items: center; 
-  }
-}
-
-
 .redText,
 .redText span {
   color: var(--secondary-color) !important;

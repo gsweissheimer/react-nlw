@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { User } from '../../types';
 
-import UserAction from './userAction';
+import EventsActions from '../eventsActions/eventsActions';
 
 import DashboardPetCard from '../dashboardPetCard/dashboardPetCard';
-import NotificationBanner from "../notificationBanner/notificationBanner";
+// import NotificationBanner from "../notificationBanner/notificationBanner";
 import Calendar from '../calendar/Calendar';
 
 import styles from "./userHome.module.css";
@@ -19,7 +19,7 @@ interface UserHomeProps {
 
 const UserHome: React.FC<UserHomeProps> = ({ User }) => {
 
-const notifications = ["Consulta da Quinn", "Aniversário do Samuel"];
+// const notifications = ["Consulta da Quinn", "Aniversário do Samuel"];
 const currentDate = new Date();
 const _month = currentDate.getMonth() + 1;
 const _year = currentDate.getFullYear();
@@ -30,7 +30,6 @@ const { Events, getEventsByTutorId } = useEvent();
 
 useEffect(() => {
   if(User != null && Events == null) getEventsByTutorId({ id: User.tutorId });
-  console.log(Events);
 }, [User, Events, getEventsByTutorId]);
 
 
@@ -42,9 +41,9 @@ const actions = Events?.map(event => ({
   return (
     <div className={styles.homeContent} >
 
-      <NotificationBanner notifications={notifications} />
+      {/* <NotificationBanner notifications={notifications} /> */}
 
-      <UserAction User={User} />
+      <EventsActions User={User} entity='family' />
 
       <HighlightText type='primary'>{User.name}</HighlightText>
 

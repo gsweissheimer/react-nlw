@@ -4,7 +4,10 @@ import api from './Api';
 const eventService = {
     insertEvent: async (params: { event: Event, callback: (data: any) => void }) => {
         api.post('/event/add', params.event).then((response) => {
-            params.callback(response.data);
+            const event = params.event;
+            event.id = response.data.data;
+
+            params.callback(event);
         }).catch((error) => {
             console.log(error);
         });
