@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './form.module.css';
 
 import HighlightText from 'components/highlightText/highlightText';
 
@@ -25,7 +26,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ label, value, name, onChange, e
         onChange={handleChange}
         className={`date-picker ${error ? 'date-picker-error' : ''}`}
       />
-      {error && <span className="error-message">{error}</span>}
+      {error && <span className={styles.errorMessage}>{error}</span>}
     </div>
   );
 };

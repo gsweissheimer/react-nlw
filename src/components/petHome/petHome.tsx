@@ -50,9 +50,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
     }, [Pet?.id]);
     
     useEffect(() => {
-      console.log('atualizo')
       if (Events) {
-        console.log('atualizo', Events)
         setActions(
           Events.map(event => ({
             date: event.eventDate || "",

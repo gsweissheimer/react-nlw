@@ -12,12 +12,15 @@ import { usePet } from '../../hooks/usePet';
 
 type PetFormProps = {
   user: User;
+  pet?: Pet | null;
   className?: string;
   onclose?: () => void;
   setnewpet: (pet: Pet, tutorId: string) => void;
+  _setPets: React.Dispatch<React.SetStateAction<Pet[]>>;
 };
 
 type FormData = {
+  id?: string;
   name: string;
   type: string;
   breedId: string;
@@ -34,18 +37,19 @@ type Errors = {
   birthDate?: string;
 }
 
-const PetForm = ({ user, className, onclose, setnewpet }: PetFormProps) => {
+const PetForm = ({ user, className, onclose, setnewpet, _setPets, pet }: PetFormProps) => {
 
     const [formData, setFormData] = useState<FormData>({
-      name: "",
-      type: "",
-      breedId: "",
-      tutorId: "",
-      birthDate: "",
-      chip: false,
+      id: pet ? pet.id : "",
+      name: pet ? pet.name : "",
+      type: pet ? pet.type : "",
+      breedId: pet ? pet.breedId : "",
+      tutorId: pet ? pet.tutorId : "",
+      birthDate: pet ? new Date(pet.birthDate).toISOString().split('T')[0] : "",
+      chip: pet ? pet.microchip : false,
     });
 
-    const { insertPet } = usePet();
+    const { insertPet, updatePet } = usePet();
 
     const [types, setTypes] = useState<{ label: string; value: string }[]>([]);
     const [breeds, setBreeds] = useState<{ label: string; value: string }[]>([]);
@@ -81,13 +85,16 @@ const PetForm = ({ user, className, onclose, setnewpet }: PetFormProps) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
+      const _method = pet ? updatePet : insertPet;
+
       const validationErrors = validate();
       if (Object.keys(validationErrors).length > 0) {
         setErrors(validationErrors);
         return;
       }
 
-      const pet: Pet = {
+      const formPet: Pet = {
+        id: formData.id,
         name: formData.name,
         type: formData.type,
         breedId: formData.breedId,
@@ -96,10 +103,14 @@ const PetForm = ({ user, className, onclose, setnewpet }: PetFormProps) => {
         microchip: formData.chip ?? false,
       };
 
-      insertPet({pet}).then(() => {
+      _method({pet: formPet}).then(() => {
         resetValues();
         if (onclose) onclose();
-        setnewpet(pet, pet.tutorId)
+        setnewpet(formPet, formPet.tutorId)
+        _setPets((prevPets: Pet[]) => [
+          ...prevPets.filter((pet) => pet.tutorId !== formPet.tutorId),
+          formPet,
+        ]);
       }).catch(() => {
         alert('Erro ao cadastrar pet'); 
       })
@@ -122,6 +133,14 @@ const PetForm = ({ user, className, onclose, setnewpet }: PetFormProps) => {
     <>
         <HighlightText type='secondary' className='white-title'>Adicionar Pet</HighlightText>
         <form className={`pet-form form-container ${className}`} onSubmit={handleSubmit}>
+            <Input
+                name='id'
+                value={formData.id ?? ""}
+                onChange={handleInputChange}
+                placeholder=""
+                type='hidden'
+                error={undefined}
+            />
             <Input
                 label="Nome"
                 name='name'
@@ -180,7 +199,7 @@ const PetForm = ({ user, className, onclose, setnewpet }: PetFormProps) => {
 
             <HighlightText type='headline' className='redText'>Revise bem os dados, essa ação não pode ser desfeita</HighlightText>
 
-            <Button type='primary' submitButton={true}>Adicionar</Button>
+            <Button type='primary' submitButton={true}>{pet ? "Editar" : "Adicionar"}</Button>
         </form>
     </>
   );

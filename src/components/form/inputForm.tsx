@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './form.module.css';
 
 import HighlightText from 'components/highlightText/highlightText';
 
 interface InputProps {
-  label: string;
+  label?: string;
   value: string;
   name?: string;
   onChange:  (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -19,7 +20,7 @@ const Input: React.FC<InputProps> = ({ label, name, value, onChange, placeholder
 
   return (
     <div className="input-container form-input-container">
-      <HighlightText type='headline' className='white-title'>{label}</HighlightText>
+      { label && <HighlightText type='headline' className='white-title'>{label}</HighlightText> }
       <input
         type={type}
         id={label}
@@ -29,7 +30,7 @@ const Input: React.FC<InputProps> = ({ label, name, value, onChange, placeholder
         placeholder={placeholder}
         className={`input ${error ? 'input-error' : ''}`}
       />
-      {error && <span className="error-message">{error}</span>}
+      {error && <span className={styles.errorMessage}>{error}</span>}
     </div>
   );
 };

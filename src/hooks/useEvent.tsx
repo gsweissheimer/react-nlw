@@ -40,7 +40,6 @@ export function useEvent() {
             
             insertEvent({ event: eventValue }).then((newEvent) => {
                 console.log('Evento inserido com sucesso');
-                console.log(newEvent);
                 if(newEvent) SetEvents(prevEvents => [...(prevEvents || []), newEvent]);
             }).catch((error) => {
                 console.error('Erro ao inserir evento:', error);

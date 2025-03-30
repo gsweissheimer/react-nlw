@@ -42,9 +42,7 @@ useEffect(() => {
 }, [User?.tutorId]);
 
 useEffect(() => {
-  console.log('atualizo')
   if (Events) {
-    console.log('atualizo', Events)
     setActions(
       Events.map(event => ({
         date: event.eventDate || "",

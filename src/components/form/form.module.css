@@ -103,3 +103,6 @@
 .whiteTitle span {
   color: white !important;
 }
+.errorMessage {
+    color: var(--secondary-color);
+}

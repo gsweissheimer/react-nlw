@@ -1,6 +1,7 @@
 import React from 'react';
 
 import HighlightText from 'components/highlightText/highlightText';
+import styles from './form.module.css';
 
 interface SelectProps {
   label: string;
@@ -33,7 +34,7 @@ const Select: React.FC<SelectProps> = ({ label, value, name, onChange, options, 
           </option>
         ))}
       </select>
-      {error && <span className="error-message">{error}</span>}
+      {error && <span className={styles.errorMessage}>{error}</span>}
     </div>
   );
 };

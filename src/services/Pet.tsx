@@ -22,6 +22,25 @@ const petService = {
         }).catch((error) => {
             console.log(error);
         });
+    },
+    deletePet: async (params: { pet: string }): Promise<boolean> => {
+        try {
+            const response = await api.put(`/pet/delete/${params.pet}`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    },
+    updatePet: async (params: { pet: Pet, callback: (data: any) => void }): Promise<boolean> => {
+        try {
+            const response = await api.put('/pet/', params.pet);
+            params.callback(response.data);
+            return true;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     }
 };
 
