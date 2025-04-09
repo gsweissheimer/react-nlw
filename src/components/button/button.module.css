@@ -22,9 +22,9 @@
 }
 
 .primaryButton:hover {
-    background-color: var(--dark-color);
-    border-color: var(--bright-color);
-    color: var(--primary-color);
+    background-color: var(--dark-color) !important;
+    border-color: var(--bright-color) !important;
+    color: var(--primary-color) !important;
 }
 
 .secondaryButton {
@@ -34,9 +34,9 @@
 }
 
 .secondaryButton:hover {
-    background-color: var(--primary-color);
-    border-color: var(--bright-color);
-    color: var(--dark-color);
+    background-color: var(--primary-color) !important;
+    border-color: var(--bright-color) !important;
+    color: var(--dark-color) !important;
 }
 
 
@@ -62,15 +62,15 @@
 }
 
 .circleButtonDark:hover {
-    background-color: var(--bright-color);
-    border-color: var(--dark-color);
-    color: var(--primary-color);
+    background-color: var(--bright-color) !important;
+    border-color: var(--dark-color) !important;
+    color: var(--primary-color) !important;
 }
 
 .circleButton:hover {
-    background-color: var(--dark-color);
-    border-color: var(--bright-color);
-    color: var(--primary-color);
+    background-color: var(--dark-color) !important;
+    border-color: var(--bright-color) !important;
+    color: var(--primary-color) !important;
 }
 
 .closeButton {
@@ -90,7 +90,7 @@
 }
 
 .closeButton:hover {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 
 h1, h2, h3, h4, h5, h6 {

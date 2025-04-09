@@ -5,6 +5,7 @@ type HighlightTextProps = {
   type: "primary" | "secondary" | "headline";
   children: React.ReactNode;
   className?: string;
+  color?: string;
 };
 
 const tagMap = {
@@ -13,14 +14,14 @@ const tagMap = {
   headline: "p",
 } as const;
 
-const HighlightText = ({ type = "primary", children, className }: HighlightTextProps) => {
+const HighlightText = ({ type = "primary", children, className, color }: HighlightTextProps) => {
   const Tag = tagMap[type];
 
   const getClassName = (type?: string | null) => clsx(style["highlight-text"], style[type || ""], className);
           
 
   return (
-    <Tag className={getClassName(type)}>
+    <Tag className={getClassName(type)} style={{ color: color ?? 'inherit' }}>
       {type === "headline" ? <span>{children}</span> : children}
     </Tag>
   );
