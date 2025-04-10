@@ -9,7 +9,7 @@ interface ButtonProps {
   submitButton?: boolean;
   className?: string;
   dataEventValue?: string;
-  color?: string;
+  color?: string | null;
 }
 
 const buttonTypes: Record<string, string> = {
@@ -20,7 +20,7 @@ const buttonTypes: Record<string, string> = {
   close: style.closeButton,
 };
 
-const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton = false, className = '', dataEventValue, color }) => {
+const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton = false, className = '', dataEventValue, color = null }) => {
 
   const getTypeClassName = (type?: string | null) => {
     const buttonTypeClass = buttonTypes[type || "primary"];
@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({ type, children, onclick, submitButton =
     className={getTypeClassName(type)}
     onClick={onclick}
     data-event-value={dataEventValue}
-    style={{ backgroundColor: color, color: color ? '#fff' : 'inherit' }}>
+    style={color ? { backgroundColor: color, color: '#fff' } : undefined}>
     {children ?? 'Enviar'}
   </button>
   );
