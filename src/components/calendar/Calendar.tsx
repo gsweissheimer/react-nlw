@@ -3,6 +3,7 @@ import style from './calendar.module.css';
 import Button from 'components/button/button';
 import HighlightText from 'components/highlightText/highlightText';
 import Text from 'components/text/text';
+import { Tooltip } from '../tooltip/tooltip';
 
 // Função para gerar os dias do mês
 const generateDays = (year: number, month: number) => {
@@ -27,7 +28,7 @@ const generateDays = (year: number, month: number) => {
 interface CalendarProps {
     year: number;
     month: number;
-    actions: { date: string; description: string }[] | [];
+    actions: { date: string; description: string, id: string, tooltip: string }[] | [];
     setMonth: (month: number) => void;
     setYear: (year: number) => void;
 }
@@ -47,8 +48,10 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, actions, setMonth, set
             return actionDate.getDate() === day && actionDate.getMonth() === month - 1 && actionDate.getFullYear() === year;
         });
 
-        return actionsForDay.map((action, index) => (
-            <HighlightText key={index} type='headline' >• { action.description }</HighlightText>
+        return actionsForDay.map((action) => (
+            <Tooltip content={action.tooltip} key={action.id}>
+                <HighlightText type='headline' >• { action.description }</HighlightText>
+            </Tooltip>
         ));
     };
 

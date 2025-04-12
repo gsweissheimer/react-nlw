@@ -16,6 +16,7 @@ export interface Event {
     id?: string;
     name: string | null;
     value?: string;
+    tooltip?: string;
     type?: string;
     entityId?: string;
     entityType?: string;

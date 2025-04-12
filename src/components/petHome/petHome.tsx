@@ -8,6 +8,7 @@ import HighlightText from '../highlightText/highlightText';
 // import Events from '../events/events'
 import Text from '../text/text';
 import { useEvent } from 'hooks/useEvent';
+import { color } from 'framer-motion';
 
 interface PetHomeProps {
   Pet?: Pet; 
@@ -38,8 +39,10 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
     
     const [actions, setActions] = useState(() => 
       Events?.map(event => ({
+      id: event.id || "",
       date: event.eventDate || "",
-      description: event.name || ""
+      description: event.name || "",
+      tooltip: event.tooltip || "",
       })) || []
     );
     
@@ -53,8 +56,10 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
       if (Events) {
         setActions(
           Events.map(event => ({
+            id: event.id || "",
             date: event.eventDate || "",
-            description: event.name || ""
+            description: event.name || "",
+            tooltip: event.tooltip || "",
           }))
         );
       }

@@ -30,8 +30,10 @@ const { Events, getEventsByTutorId, SetEvents, handleEvent } = useEvent();
 
 const [actions, setActions] = useState(() => 
   Events?.map(event => ({
-  date: event.eventDate || "",
-  description: event.name || ""
+    id: event.id || "",
+    date: event.eventDate || "",
+    description: event.name || "",
+    tooltip: event.tooltip || "",
   })) || []
 );
 
@@ -45,8 +47,10 @@ useEffect(() => {
   if (Events) {
     setActions(
       Events.map(event => ({
+        id: event.id || "",
         date: event.eventDate || "",
-        description: event.name || ""
+        description: event.name || "",
+        tooltip: event.tooltip || "",
       }))
     );
   }
