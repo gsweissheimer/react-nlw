@@ -7,7 +7,7 @@ import io from 'socket.io-client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const socket = io('https://nodejs-nlw-production.up.railway.app', { transports: ['websocket'], withCredentials: true });
+const socket = io('https://nodejs-nlw.railway.internal', { transports: ['websocket'], withCredentials: true });
 
 
 function App() {
