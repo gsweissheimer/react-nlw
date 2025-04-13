@@ -26,7 +26,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://nodejs-nlw.railway.internal/au/login', {
+            const response = await axios.post('https://nodejs-nlw-production.up.railway.app/au/login', {
                 username,
                 password
             });
