@@ -4,6 +4,15 @@
 .tooltipContainer {
     position: relative;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .tooltipContainer span {
+    margin: 13px 0px;
+    line-height: 1.3rem;
   }
   
   /* Texto da tooltip */

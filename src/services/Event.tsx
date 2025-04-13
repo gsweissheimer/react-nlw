@@ -14,6 +14,15 @@ const eventService = {
             throw error; // Re-throw the error to ensure the function always returns or throws
         }
     },
+    deleteEventsById: async (params: { id: string }): Promise<boolean> => {
+        try {
+            await api.delete(`/event/${params.id}`);
+            return true;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    },
     getEventsByTutorId: async (params: { id: string, callback: (data: any) => void }) => {
         api.get(`/event/${params.id}`).then((response) => {
             params.callback(response.data.data);

@@ -90,7 +90,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
                 </div> */}
 
                 <div className="dash-box full">
-                  <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear} />
+                  <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear} _setEvents={SetEvents} />
                 </div>
 
             </div>

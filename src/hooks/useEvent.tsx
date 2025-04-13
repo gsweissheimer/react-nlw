@@ -28,6 +28,16 @@ export function useEvent() {
         await service.getEventsByPetId({id: params.id, callback: SetEvents});
     }
 
+    const deleteEventsById = async (params: { id: string, _callback: React.Dispatch<React.SetStateAction<Event[] | null>> }) => {
+        await service.deleteEventsById({id: params.id}).then((response) => {
+            if(response) {
+                params._callback(prevEvents => [...(prevEvents?.filter(event => params.id !== event.id) || [])]);
+            }
+        }).catch((error) => {
+            console.error('Erro ao deletar evento:', error);
+        })  
+    }
+
     const handleEvent = (event: React.MouseEvent<HTMLButtonElement>, entityId: string, entityType: string) => {
             const eventValue: Event = {
                 name: event.currentTarget.textContent,
@@ -54,7 +64,8 @@ export function useEvent() {
             insertEvent,
             getEventsByTutorId,
             getEventsByPetId,
-            handleEvent
+            handleEvent,
+            deleteEventsById
         }
     
 }
