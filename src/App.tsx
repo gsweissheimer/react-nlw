@@ -7,28 +7,28 @@ import io from 'socket.io-client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const socket = io('https://react-nlw-production.up.railway.app', { transports: ['websocket'], withCredentials: true });
+// const socket = io('https://react-nlw-production.up.railway.app', { transports: ['websocket'], withCredentials: true });
 
 
 function App() {
-    useEffect(() => {
+    // useEffect(() => {
 
-        const handleNotification = (data: any) => {
-            console.log('Dados recebidos: ', data);
-            toast.info(data.message);
-        };
+    //     const handleNotification = (data: any) => {
+    //         console.log('Dados recebidos: ', data);
+    //         toast.info(data.message);
+    //     };
     
-        socket.on('connect', () => console.log('Conectado!'));
-        socket.on('connect_error', (err) => console.error('Erro de conexão:', err));
-        socket.on('notification', handleNotification);
+    //     socket.on('connect', () => console.log('Conectado!'));
+    //     socket.on('connect_error', (err) => console.error('Erro de conexão:', err));
+    //     socket.on('notification', handleNotification);
     
-        return () => {
-            console.log("Desconectando...");
-            socket.off('connect');
-            socket.off('connect_error');
-            socket.off('notification', handleNotification);
-        };
-    }, []);
+    //     return () => {
+    //         console.log("Desconectando...");
+    //         socket.off('connect');
+    //         socket.off('connect_error');
+    //         socket.off('notification', handleNotification);
+    //     };
+    // }, []);
 
     return (
         <AuthProvider>
