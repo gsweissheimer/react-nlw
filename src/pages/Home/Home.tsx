@@ -6,12 +6,12 @@ import { useUser } from '../../hooks/useUser';
 import { useToken } from '../../hooks/useToken';
 
 const Home = () => {
-
+  
   const { User, getUser } = useUser();
   const { getUserIdFromToken } = useToken();
-
+  
   useEffect(() => {
-    if(User === null) {
+    if(!User) {
       getUser({ id: getUserIdFromToken().toString() });
     }
   }, [User]);
