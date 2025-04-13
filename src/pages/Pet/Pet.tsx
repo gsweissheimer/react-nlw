@@ -16,7 +16,7 @@ const Pet = () => {
     const { Pet, getPet } = usePet();
 
     useEffect(() => {
-        if (id && Pet == null) {
+        if (id && Pet === null) {
             getPet({ id });
         }
     }, [id]);

@@ -1,4 +1,4 @@
-import React, { use, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Pet, User } from "../../types/";
 import { usePet } from '../../hooks/usePet';
@@ -72,7 +72,7 @@ const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user, isProfile = f
           <div className={styles.buttonBox} key={Pet.id}>
             <Button color={Pet.color} type='secondary' onclick={() => console.log('Pet', Pet)}>
                 <Link to={`/pet/${Pet.id}`}>
-                  <h2>{ Pet.name } { Pet.type == 'cat' ? <FaCat /> : <FaDog />}</h2>
+                  <h2>{ Pet.name } { Pet.type === 'cat' ? <FaCat /> : <FaDog />}</h2>
                 </Link>
             </Button>
             {isProfile && <div className={styles.buttonOptions}>

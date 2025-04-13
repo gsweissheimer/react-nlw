@@ -8,7 +8,6 @@ import HighlightText from '../highlightText/highlightText';
 // import Events from '../events/events'
 import Text from '../text/text';
 import { useEvent } from 'hooks/useEvent';
-import { color } from 'framer-motion';
 
 interface PetHomeProps {
   Pet?: Pet; 
