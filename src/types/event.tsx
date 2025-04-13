@@ -9,6 +9,7 @@ export const EventActions: EventAction[] = [
     { label: 'Não quis comer', value: 'nao-quis-comer', entity: "pet" },
     { label: 'Agitado', value: 'esta-agitado', entity: "pet" },
     { label: 'Bola de pelos', value: 'bola-de-pelos', entity: "all" },
+    { label: 'Mijou Fora', value: 'mijou-fora', entity: "all" },
     { label: 'Amoado', value: 'esta-amoado', entity: "pet" },
 ];
 
