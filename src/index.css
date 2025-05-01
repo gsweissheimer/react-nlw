@@ -214,3 +214,15 @@ body {
 .redText span {
   color: var(--secondary-color) !important;
 }
+
+
+.doubleInputLine {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.doubleInputLine .form-input-container {
+  width: 50%;
+}
