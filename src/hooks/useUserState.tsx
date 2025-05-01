@@ -2,16 +2,19 @@
 import { useState, useCallback } from 'react';
 import service from '../services/User';
 import { User } from 'types';
+import { useToken } from './useToken';
+
 
 export function useUserState() {
   const [user, setUser] = useState<User | undefined>();
+  const { getUserIdFromToken } = useToken();
   
-  const getUser = useCallback(
-    async (params: { id: string }) => {
-      await service.getUser({ id: params.id, callback: setUser });
+  const getMyUser = useCallback(
+    async () => {
+      await service.getUser({ id: getUserIdFromToken().toString(), callback: setUser });
     },
     [setUser]
   );
 
-  return { user, getUser, setUser };
+  return { user, setUser, getMyUser };
 }

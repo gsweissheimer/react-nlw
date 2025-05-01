@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import { useCallback } from 'react';
 
 export function useToken() {
@@ -12,11 +11,11 @@ export function useToken() {
     }, []);
 
     const getToken = () => {
-        return Cookies.get('catdogtok')
+        return localStorage.getItem('token') || undefined;
     }
 
     const removeToken = () => {
-        Cookies.remove('catdogtok');
+        localStorage.removeItem('token');
     };
 
     return {

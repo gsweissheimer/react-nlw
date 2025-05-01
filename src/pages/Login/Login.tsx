@@ -1,5 +1,5 @@
-import Cookies from 'js-cookie';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,17 +8,14 @@ import LoginAlert from './LoginAlert';
 import style from './login.module.css';
 import Button from 'components/button/button';
 
-const setTokenCookie = (token: string): void => {
-    Cookies.set('catdogtok', token, { expires: 1, secure: true });
-};
-
 const background = '/assets/img/cute-pet-collage-isolated.jpg';
 
 const Login = () => {
+    const { login } = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const [token, setToken] = useState('');
+    const [token] = useState('');
 
     const navigate = useNavigate();
 
@@ -32,8 +29,8 @@ const Login = () => {
             });
 
             const tokenWithoutBearer = response.data.token.replace('Bearer ', '');
-            setToken(tokenWithoutBearer);
-            setTokenCookie(tokenWithoutBearer);
+            login(tokenWithoutBearer);
+            
             setMessage('Login bem-sucedido!');
             navigate('/'); // Redireciona para a página Home ("/")
         } catch (error) {
