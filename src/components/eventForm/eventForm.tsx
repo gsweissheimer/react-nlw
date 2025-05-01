@@ -190,7 +190,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
       setFormData({
         entityId: "",
         entityType: "",
-        eventDate: new Date().toISOString(),
+        eventDate: new Date().toISOString().split('T')[0],
         name: "",
         value: "",
         type: "event",
@@ -243,7 +243,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
             
             <DatePicker
                   label="Data do Evento"
-                  name='date'
+                  name='eventDate'
                   value={formData.eventDate}
                   onChange={handleInputChange}
                   error={errors?.eventDate}
