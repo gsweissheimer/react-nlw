@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
-import { User } from '../../types';
+import React, { useEffect, useState, useContext } from 'react';
 
 import EventsActions from '../eventsActions/eventsActions';
 
@@ -10,14 +8,10 @@ import Calendar from '../calendar/Calendar';
 
 import styles from "./userHome.module.css";
 import HighlightText from 'components/highlightText/highlightText';
-import { useEvent } from 'hooks/useEvent';
+import { useEventContext } from '../../context/EventContext';
+import {AuthContext} from '../../context/AuthContext';
 
-
-interface UserHomeProps {
-  User: User;
-}
-
-const UserHome: React.FC<UserHomeProps> = ({ User }) => {
+const UserHome: React.FC = () => {
 
 // const notifications = ["Consulta da Quinn", "Aniversário do Samuel"];
 const currentDate = new Date();
@@ -26,7 +20,8 @@ const _year = currentDate.getFullYear();
 const [year, setYear] = useState(_year);
 const [month, setMonth] = useState(_month);
 
-const { Events, getEventsByTutorId, SetEvents, handleEvent } = useEvent();
+const { Events, getEventsByTutorId, handleEvent } = useEventContext();
+const { user } = useContext(AuthContext);
 
 const [actions, setActions] = useState(() => 
   Events?.map(event => ({
@@ -38,10 +33,10 @@ const [actions, setActions] = useState(() =>
 );
 
 useEffect(() => {
-  if (User?.tutorId) {
-      getEventsByTutorId({ id: User.tutorId });
+  if (user?.tutorId) {
+      getEventsByTutorId({ id: user.tutorId });
   }
-}, [User?.tutorId]);
+}, [user?.tutorId]);
 
 useEffect(() => {
   if (Events) {
@@ -61,16 +56,16 @@ useEffect(() => {
 
       {/* <NotificationBanner notifications={notifications} /> */}
 
-      <EventsActions User={User} entity='family' _setEvents={SetEvents} _handleEvent={handleEvent} />
+      <EventsActions entity='family' _handleEvent={handleEvent} />
 
-      <HighlightText type='primary'>{User.name}</HighlightText>
+      <HighlightText type='primary'>{user?.name}</HighlightText>
 
-      { User.pets && (
-        <DashboardPetCard user={User} />
+      { user?.pets && (
+        <DashboardPetCard user={user} />
       )}
 
       <div className="dash-box full">
-        <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear} _setEvents={SetEvents}  />
+        <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear} />
       </div>
       
     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Input from '../form/inputForm';
 import Button from 'components/button/button';
 import HighlightText from 'components/highlightText/highlightText';
@@ -6,14 +6,12 @@ import Select from 'components/form/selectForm';
 import { User, Event, EntityOption, EventActions, EventAction } from '../../types';
 import DatePicker from 'components/form/dataForm';
 
-import { useEvent } from 'hooks/useEvent';
+import { useEventContext } from 'context/EventContext';
+import { AuthContext } from 'context/AuthContext';
 
 type EventFormProps = {
-  user: User;
   className?: string;
   onclose?: () => void;
-  setnewevent: (event: Event) => void;
-  _setEvents: React.Dispatch<React.SetStateAction<Event[] | null>>;
 };
 
 type FormData = {
@@ -34,7 +32,7 @@ type Errors = {
   eventDate: string;
 }
 
-const EventForm = ({ user, className, onclose, setnewevent: setnewevent, _setEvents: _setEvents }: EventFormProps) => {
+const EventForm = ({ className, onclose }: EventFormProps) => {
 
     const [formData, setFormData] = useState<FormData>({
       entityId: "",
@@ -42,10 +40,11 @@ const EventForm = ({ user, className, onclose, setnewevent: setnewevent, _setEve
       eventDate: new Date().toISOString().split('T')[0],
       name: "",
       value: "",
-      type: "",
+      type: "event",
     });
 
-    const { insertEvent } = useEvent();
+    const { insertEvent, SetEvents } = useEventContext();
+    const { user } = useContext(AuthContext);
 
     const [entities, setEntities] = useState<EntityOption[]>([]);
     const [optionsDictionary, setOptionsDictionary] = useState<EventAction[]>([]);
@@ -149,6 +148,9 @@ const EventForm = ({ user, className, onclose, setnewevent: setnewevent, _setEve
       if (e.target.name === 'entityId') {
         formData.entityType = optionsDictionary.find(option => option.value === e.target.value)?.entity || '';
       }
+      if (e.target.name === 'value') {
+        formData.name = EventActions.find(action => action.value === e.target.value)?.label || '';
+      }
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
@@ -165,24 +167,24 @@ const EventForm = ({ user, className, onclose, setnewevent: setnewevent, _setEve
         entityType: formData.entityType,
         entityId: formData.entityId,
         eventDate: formData.eventDate,
-        value: formData.name,
-        name: formData.value,
+        value: formData.value,
+        name: formData.name,
         type: formData.type,
       };
 
       console.log("formEvent", formEvent);
 
-      // insertEvent({event: formEvent}).then(() => {
-      //   resetValues();
-      //   if (onclose) onclose();
-      //   // setnewevent(formEvent);
-      //   // _setEvent((prevPets: Pet[]) => [
-      //   //   ...prevPets.filter((pet) => pet.tutorId !== formEvent.tutorId),
-      //   //   formEvent,
-      //   // ]);
-      // }).catch(() => {
-      //   alert('Erro ao cadastrar pet'); 
-      // })
+      insertEvent({event: formEvent}).then(() => {
+        resetValues();
+        if (onclose) onclose();
+        SetEvents(prevEvents => [...(prevEvents || []), formEvent]);
+        // _setEvent((prevPets: Pet[]) => [
+        //   ...prevPets.filter((pet) => pet.tutorId !== formEvent.tutorId),
+        //   formEvent,
+        // ]);
+      }).catch(() => {
+        alert('Erro ao cadastrar pet'); 
+      })
 
     }
 
@@ -190,10 +192,10 @@ const EventForm = ({ user, className, onclose, setnewevent: setnewevent, _setEve
       setFormData({
         entityId: "",
         entityType: "",
-        eventDate: new Date().toISOString().split('T')[0],
+        eventDate: new Date().toISOString(),
         name: "",
         value: "",
-        type: "",
+        type: "event",
       });
       setErrors(null);
     }
@@ -222,12 +224,19 @@ const EventForm = ({ user, className, onclose, setnewevent: setnewevent, _setEve
             />
             
             <Select
-                label="Evento"
-                name='name'
-                value={formData.entityId}
+                label="Nome"
+                name='value'
+                value={formData.value}
                 onChange={handleSelectChange}
                 options={EventActions}
-                error={errors?.entityId}
+                error={errors?.name}
+            />
+            
+            <Input
+                name='value'
+                onChange={handleInputChange}
+                type='hidden'
+                value={formData.entityType}
             />
 
             </div>

@@ -9,7 +9,7 @@ const api = axios.create({
 // Adicionando o token Bearer automaticamente
 api.interceptors.request.use(
     (config) => {
-        const token = Cookies.get('catdogtok'); // Busca o token no cookie
+        const token = localStorage.getItem('token'); // Tenta obter o token do localStorage ou dos cookies
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }

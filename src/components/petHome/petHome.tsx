@@ -67,7 +67,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
     return (
       <div className="pet-content">
         
-        {/* <EventsActions Pet={Pet} entity='pet' _setEvents={SetEvents} _handleEvent={handleEvent}/> */}
+        <EventsActions Pet={Pet} entity='pet' _handleEvent={handleEvent}/>
 
           {Pet && (
             <>
@@ -90,7 +90,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
                 </div> */}
 
                 <div className="dash-box full">
-                  <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear} _setEvents={SetEvents} />
+                  <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear}/>
                 </div>
 
             </div>

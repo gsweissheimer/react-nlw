@@ -10,7 +10,7 @@ const Home = () => {
     <div className="home-content">
       <Dashboard>
         {user &&
-          <UserHome User={user} />
+          <UserHome />
         }
       </Dashboard>
     </div>

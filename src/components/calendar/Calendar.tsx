@@ -4,7 +4,7 @@ import Button from 'components/button/button';
 import HighlightText from 'components/highlightText/highlightText';
 import Text from 'components/text/text';
 import { Tooltip } from '../tooltip/tooltip';
-import { useEvent } from 'hooks/useEvent';
+import { useEventContext } from 'context/EventContext';
 import { Event } from '../../types/event';
 
 // Função para gerar os dias do mês
@@ -33,14 +33,13 @@ interface CalendarProps {
     actions: { date: string; description: string, id: string, tooltip: string }[] | [];
     setMonth: (month: number) => void;
     setYear: (year: number) => void;
-    _setEvents: React.Dispatch<React.SetStateAction<Event[] | null>>;
     
 }
 
-const Calendar: React.FC<CalendarProps> = ({ year, month, actions, setMonth, setYear, _setEvents }) => {
+const Calendar: React.FC<CalendarProps> = ({ year, month, actions, setMonth, setYear }) => {
     const [days, setDays] = useState<(number | null)[]>([]);
 
-    const { deleteEventsById }= useEvent();
+    const { deleteEventsById, SetEvents }= useEventContext();
 
     useEffect(() => {
         // Gerar os dias do mês sempre que o ano ou mês mudar
@@ -57,7 +56,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, actions, setMonth, set
         return actionsForDay.map((action) => (
             <Tooltip content={action.tooltip} key={action.id}>
                 <HighlightText type='headline' >• { action.description }</HighlightText>
-                <span onClick={() => {deleteEventsById({id:action.id, _callback: _setEvents})}} >X</span>
+                <span onClick={() => {deleteEventsById({id:action.id, _callback: SetEvents})}} >X</span>
             </Tooltip>
         ));
     };
