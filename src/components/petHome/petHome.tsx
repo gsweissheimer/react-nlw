@@ -7,7 +7,6 @@ import EventsActions from '../eventsActions/eventsActions';
 import HighlightText from '../highlightText/highlightText';
 // import Events from '../events/events'
 import Text from '../text/text';
-import { useEvent } from 'hooks/useEvent';
 
 interface PetHomeProps {
   Pet?: Pet; 
@@ -33,41 +32,11 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
     const _year = currentDate.getFullYear();
     const [year, setYear] = useState(_year);
     const [month, setMonth] = useState(_month);
-    
-    const { Events, getEventsByPetId, SetEvents, handleEvent } = useEvent();
-    
-    const [actions, setActions] = useState(() => 
-      Events?.map(event => ({
-      id: event.id || "",
-      date: event.eventDate || "",
-      description: event.name || "",
-      tooltip: event.tooltip || "",
-      })) || []
-    );
-    
-    useEffect(() => {
-      if (Pet?.id) {
-        getEventsByPetId({ id: Pet?.id });
-      }
-    }, [Pet?.id]);
-    
-    useEffect(() => {
-      if (Events) {
-        setActions(
-          Events.map(event => ({
-            id: event.id || "",
-            date: event.eventDate || "",
-            description: event.name || "",
-            tooltip: event.tooltip || "",
-          }))
-        );
-      }
-    }, [Events]);
   
     return (
       <div className="pet-content">
         
-        <EventsActions Pet={Pet} entity='pet' _handleEvent={handleEvent}/>
+        <EventsActions Pet={Pet} entity='pet'/>
 
           {Pet && (
             <>
@@ -82,15 +51,8 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
 
                 </div>
 
-                {/* <div className="dash-box half">
-                  <Events></Events>
-                </div>
-                <div className="dash-box half">
-                  <Events></Events>
-                </div> */}
-
                 <div className="dash-box full">
-                  <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear}/>
+                  <Calendar year={year} month={month} setMonth={setMonth} setYear={setYear}  petId={Pet.id || undefined}/>
                 </div>
 
             </div>

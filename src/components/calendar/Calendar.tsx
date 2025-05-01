@@ -5,7 +5,6 @@ import HighlightText from 'components/highlightText/highlightText';
 import Text from 'components/text/text';
 import { Tooltip } from '../tooltip/tooltip';
 import { useEventContext } from 'context/EventContext';
-import { Event } from '../../types/event';
 
 // Função para gerar os dias do mês
 const generateDays = (year: number, month: number) => {
@@ -13,7 +12,6 @@ const generateDays = (year: number, month: number) => {
     const firstDay = new Date(year, month - 1, 1).getDay(); // Dia da semana em que o mês começa
     const days = [];
     
-
     // Preenche os dias antes do primeiro dia com vazios
     for (let i = 0; i < firstDay; i++) {
         days.push(null);
@@ -30,16 +28,51 @@ const generateDays = (year: number, month: number) => {
 interface CalendarProps {
     year: number;
     month: number;
-    actions: { date: string; description: string, id: string, tooltip: string }[] | [];
+    petId?: string;
+    userId?: string;
     setMonth: (month: number) => void;
     setYear: (year: number) => void;
     
 }
 
-const Calendar: React.FC<CalendarProps> = ({ year, month, actions, setMonth, setYear }) => {
+const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMonth, setYear }) => {
+    
+    const { Events, deleteEventsById, SetEvents, getEventsByPetId, getEventsByTutorId } = useEventContext();
     const [days, setDays] = useState<(number | null)[]>([]);
+    
+    const [actions, setActions] = useState(() => 
+        Events?.map(event => ({
+        id: event.id || "",
+        date: event.eventDate || "",
+        description: event.name || "",
+        tooltip: event.tooltip || "",
+        })) || []
+      );
 
-    const { deleteEventsById, SetEvents }= useEventContext();
+    useEffect(() => {
+        if (petId) {
+          getEventsByPetId({ id: petId });
+        }
+      }, [petId]);
+
+      useEffect(() => {
+        if (userId) {
+            getEventsByTutorId({ id: userId });
+        }
+      }, [userId]);
+      
+      useEffect(() => {
+        if (Events) {
+          setActions(
+            Events.map(event => ({
+              id: event.id || "",
+              date: event.eventDate || "",
+              description: event.name || "",
+              tooltip: event.tooltip || "",
+            }))
+          );
+        }
+      }, [Events]);
 
     useEffect(() => {
         // Gerar os dias do mês sempre que o ano ou mês mudar

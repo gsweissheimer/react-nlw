@@ -20,43 +20,14 @@ const _year = currentDate.getFullYear();
 const [year, setYear] = useState(_year);
 const [month, setMonth] = useState(_month);
 
-const { Events, getEventsByTutorId, handleEvent } = useEventContext();
 const { user } = useContext(AuthContext);
-
-const [actions, setActions] = useState(() => 
-  Events?.map(event => ({
-    id: event.id || "",
-    date: event.eventDate || "",
-    description: event.name || "",
-    tooltip: event.tooltip || "",
-  })) || []
-);
-
-useEffect(() => {
-  if (user?.tutorId) {
-      getEventsByTutorId({ id: user.tutorId });
-  }
-}, [user?.tutorId]);
-
-useEffect(() => {
-  if (Events) {
-    setActions(
-      Events.map(event => ({
-        id: event.id || "",
-        date: event.eventDate || "",
-        description: event.name || "",
-        tooltip: event.tooltip || "",
-      }))
-    );
-  }
-}, [Events]);
 
   return (
     <div className={styles.homeContent} >
 
       {/* <NotificationBanner notifications={notifications} /> */}
 
-      <EventsActions entity='family' _handleEvent={handleEvent} />
+      <EventsActions entity='family' />
 
       <HighlightText type='primary'>{user?.name}</HighlightText>
 
@@ -65,7 +36,7 @@ useEffect(() => {
       )}
 
       <div className="dash-box full">
-        <Calendar year={year} month={month} actions={actions} setMonth={setMonth} setYear={setYear} />
+        <Calendar year={year} month={month} setMonth={setMonth} setYear={setYear} userId={user.tutorId || undefined} />
       </div>
       
     </div>

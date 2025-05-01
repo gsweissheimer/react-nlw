@@ -8,17 +8,18 @@ import { AuthContext } from '../../context/AuthContext';
 import styles from './eventsActions.module.css';
 import Modal from 'components/modal/modal';
 import { useState } from 'react';
+import { useEventContext } from 'context/EventContext';
 
 interface PetActionProps {
     Pet?: Pet;
     entity: string;
-    _handleEvent: (e: React.MouseEvent<HTMLButtonElement>, entityId: string, entityType: string) => void;
 }
 
-const EventsActions: React.FC<PetActionProps> = ({ Pet, entity, _handleEvent }) => {
+const EventsActions: React.FC<PetActionProps> = ({ Pet, entity }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const { user } = useContext(AuthContext);
+        const { handleEvent } = useEventContext();
 
     const getEntityId = () => {
         if (entity === 'pet') return Pet?.id || '';
@@ -33,7 +34,7 @@ const EventsActions: React.FC<PetActionProps> = ({ Pet, entity, _handleEvent }) 
         <div className={styles.action}>
             <Button type='secondary' onclick={e => setIsOpen(true)}>Personalizado</Button>
             {EventActions.filter(action => action.entity === entity || action.entity === 'all').map((action, index) => (
-                <Button dataEventValue={action.value} key={index} type='primary' onclick={e => _handleEvent(e, entityId, entity)}>{action.label}</Button>
+                <Button dataEventValue={action.value} key={index} type='primary' onclick={e => handleEvent(e, entityId, entity)}>{action.label}</Button>
             ))}
             <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
                 <EventForm onclose={() => setIsOpen(false)} />
