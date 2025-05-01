@@ -166,13 +166,11 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
       const formEvent: Event = {
         entityType: formData.entityType,
         entityId: formData.entityId,
-        eventDate: formData.eventDate,
+        eventDate: new Date(`${formData.eventDate}T${new Date().toTimeString().split(' ')[0]}`).toISOString(),
         value: formData.value,
         name: formData.name,
         type: formData.type,
       };
-
-      console.log("formEvent", formEvent);
 
       insertEvent({event: formEvent}).then(() => {
         resetValues();

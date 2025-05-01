@@ -36,7 +36,7 @@ const EventsActions: React.FC<PetActionProps> = ({ Pet, entity, _handleEvent }) 
                 <Button dataEventValue={action.value} key={index} type='primary' onclick={e => _handleEvent(e, entityId, entity)}>{action.label}</Button>
             ))}
             <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-                <EventForm />
+                <EventForm onclose={() => setIsOpen(false)} />
             </Modal>
         </div>
     );
