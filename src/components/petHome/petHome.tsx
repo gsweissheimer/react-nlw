@@ -67,7 +67,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
     return (
       <div className="pet-content">
         
-        <EventsActions Pet={Pet} entity='pet' _setEvents={SetEvents} _handleEvent={handleEvent}/>
+        {/* <EventsActions Pet={Pet} entity='pet' _setEvents={SetEvents} _handleEvent={handleEvent}/> */}
 
           {Pet && (
             <>

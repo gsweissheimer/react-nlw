@@ -1,0 +1,58 @@
+body {
+  background-color: black;
+}
+.terminal {
+  color: #00FF00;
+  height: 100vh;
+  width: 30vw;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.screen {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.userLine {
+  color: #00FF00; /* Tom de verde para mensagem do usuário */
+}
+
+.responseLine {
+  color: #66FF66; /* Tom de verde diferente para a resposta fixa */
+}
+
+.inputLine {
+  display: flex;
+  align-items: center;
+}
+
+.prompt {
+  margin-right: 5px;
+}
+
+.inputField {
+  background: none;
+  border: none;
+  outline: none;
+  color: #00FF00;
+  font-family: inherit;
+  font-size: 1em;
+  flex: 1;
+}
+
+.cursor {
+  margin-left: 2px;
+  animation: blink 1s step-start 0s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.inputField:focus {
+  cursor: none;
+}

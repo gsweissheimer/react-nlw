@@ -1,8 +1,13 @@
-export type EventAction = {
+export interface EntityOption {
     label: string;
     value: string;
-    entity: string;
-};
+  }
+
+  export type EventAction = {
+      label: string;
+      value: string;
+      entity: string;
+  };
 
 export const EventActions: EventAction[] = [
     { label: 'Vomito', value: 'vomitou', entity: "all" },

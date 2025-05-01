@@ -2,25 +2,25 @@ import { useEffect } from 'react';
 import Dashboard from '../Dashboard/Dashboard';
 import UserHome from '../../components/userHome/userHome';
 
-import { useUser } from '../../hooks/useUser';
+import { useUserState } from '../../hooks/useUserState';
 import { useToken } from '../../hooks/useToken';
 
 const Home = () => {
   
-  const { User, getUser } = useUser();
+  const { user, getUser } = useUserState();
   const { getUserIdFromToken } = useToken();
   
   useEffect(() => {
-    if(!User) {
+    if(!user) {
       getUser({ id: getUserIdFromToken().toString() });
     }
-  }, [User]);
+  }, [user]);
 
   return (
     <div className="home-content">
       <Dashboard>
-        {User &&
-          <UserHome User={User} />
+        {user &&
+          <UserHome User={user} />
         }
       </Dashboard>
     </div>
