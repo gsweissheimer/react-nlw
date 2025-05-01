@@ -11,7 +11,11 @@
     gap: 10px;
   }
   .tooltipContainer span {
-    margin: 13px 0px;
+    margin: 3px 0px;
+    line-height: 1.3rem;
+  }
+  .tooltipContainer p {
+    margin: 3px 0px;
     line-height: 1.3rem;
   }
   
