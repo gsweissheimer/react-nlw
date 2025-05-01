@@ -1,10 +1,9 @@
-import React from 'react';
-import { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import AppRoutes from './routes/AppRoutes';
-import io from 'socket.io-client';
-import { ToastContainer, toast } from 'react-toastify';
+// import io from 'socket.io-client';
+// import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // const socket = io('https://react-nlw-production.up.railway.app', { transports: ['websocket'], withCredentials: true });
@@ -34,7 +33,7 @@ function App() {
         <AuthProvider>
             <Router>
                 <AppRoutes />
-                <ToastContainer position="top-left" autoClose={5000} />
+                {/* <ToastContainer position="top-left" autoClose={5000} /> */}
             </Router>
         </AuthProvider>
     );

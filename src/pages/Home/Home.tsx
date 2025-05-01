@@ -1,20 +1,10 @@
-import { useEffect } from 'react';
+import { useContext } from 'react';
 import Dashboard from '../Dashboard/Dashboard';
 import UserHome from '../../components/userHome/userHome';
-
-import { useUserState } from '../../hooks/useUserState';
-import { useToken } from '../../hooks/useToken';
+import { AuthContext } from '../../context/AuthContext';
 
 const Home = () => {
-  
-  const { user, getUser } = useUserState();
-  const { getUserIdFromToken } = useToken();
-  
-  useEffect(() => {
-    if(!user) {
-      getUser({ id: getUserIdFromToken().toString() });
-    }
-  }, [user]);
+  const { user } = useContext(AuthContext);
 
   return (
     <div className="home-content">
