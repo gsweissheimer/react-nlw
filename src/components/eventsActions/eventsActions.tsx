@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { Pet, EventActions, User } from "../../types";
 import { Event } from '../../types/';
 import Button from 'components/button/button';
@@ -17,9 +17,15 @@ interface PetActionProps {
 
 const EventsActions: React.FC<PetActionProps> = ({ Pet, entity }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [ entityId, setEntityId ] = useState<string>('');
 
     const { user } = useContext(AuthContext);
         const { handleEvent } = useEventContext();
+
+    useEffect(() => {
+        setEntityId(getEntityId());
+        console.log('getEntityId', entity, Pet, user);
+    }, [entity, Pet, user]);
 
     const getEntityId = () => {
         if (entity === 'pet') return Pet?.id || '';
@@ -27,8 +33,6 @@ const EventsActions: React.FC<PetActionProps> = ({ Pet, entity }) => {
         if (entity === 'tutor') return user?.tutorId || '';
         return '';
     };
-    
-    const entityId: string = getEntityId();
 
     return (
         <div className={styles.action}>
