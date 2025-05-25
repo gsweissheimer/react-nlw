@@ -10,15 +10,15 @@ export interface EntityOption {
   };
 
 export const EventActions: EventAction[] = [
-    { label: 'Agressivo', value: 'vomitou', entity: "all" },
-    { label: 'Vomito', value: 'vomitou', entity: "all" },
+    { label: 'Agressivo', value: 'agressivo', entity: "pet" },
+    { label: 'Vomito', value: 'vomitou', entity: "pet" },
     { label: 'Não quis comer', value: 'nao-quis-comer', entity: "pet" },
-    { label: 'Verbalizando Excessivamente', value: 'nao-quis-comer', entity: "pet" },
-    { label: 'Agitado', value: 'esta-agitado', entity: "pet" },
-    { label: 'Bola de pelos', value: 'bola-de-pelos', entity: "all" },
-    { label: 'Xixi Fora', value: 'mijou-fora', entity: "all" },
-    { label: 'Cocô Fora', value: 'mijou-fora', entity: "all" },
-    { label: 'Amoado', value: 'esta-amoado', entity: "pet" },
+    { label: 'Miando Muido', value: 'miando-muito', entity: "pet" },
+    { label: 'Agitado', value: 'agitado', entity: "pet" },
+    { label: 'Bola de pelos', value: 'bola-de-pelos', entity: "pet" },
+    { label: 'Xixi Fora', value: 'mijou-fora', entity: "pet" },
+    { label: 'Cocô Fora', value: 'coco-fora', entity: "pet" },
+    { label: 'Amoado', value: 'amoado', entity: "pet" },
 ];
 
 export interface Event {
