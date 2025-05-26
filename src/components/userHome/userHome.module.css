@@ -1,4 +1,9 @@
 /* userHome.module.css */
+.homeContent {
+    display: flex
+;
+    gap: 16px;
+}
 .homeContent h2.title {
     font-weight: 400;
     font-size: 2rem;

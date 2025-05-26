@@ -27,16 +27,18 @@ const { user } = useContext(AuthContext);
 
       {/* <NotificationBanner notifications={notifications} /> */}
 
-      <EventsActions entity='family' />
 
-      <HighlightText type='primary'>{user?.name}</HighlightText>
-
-      { user?.pets && (
-        <DashboardPetCard user={user} />
-      )}
-
-      <div className="dash-box full">
+      <div className="dash-box third">
         <Calendar year={year} month={month} setMonth={setMonth} setYear={setYear} userId={user.tutorId || undefined} />
+      </div>
+      <div className="dash-box quarter">
+        <EventsActions entity='family' />
+
+        <HighlightText type='primary'>{user?.name}</HighlightText>
+
+        { user?.pets && (
+          <DashboardPetCard user={user} />
+        )}
       </div>
       
     </div>

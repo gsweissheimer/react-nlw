@@ -32,30 +32,30 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
 
     return (
       <div className="pet-content">
-        <EventsActions Pet={Pet} entity='pet'/>
           {Pet && (
             <>
               <div className="dashboard">
-                <div className="dash-box full pet-box">
-                <div className="leftCard">
-                  <div className="headerCard">
-                    {Pet.isCastrated  && <Text type='badge' className='no-margin yellowBadge'>Castrado</Text>}
-                    {Pet.isVaccinated && <Text type='badge' className='no-margin blueBadge'>Vacinado</Text>}
-                    {Pet.microchip    && <Text type='badge' className='no-margin greenBadge'>Chipado</Text>}
-                    {Pet.isFelv       && <Text type='badge' className='no-margin redBadge'>Felv</Text>}
-                    {Pet.isFiev       && <Text type='badge' className='no-margin redBadge'>Fiv</Text>}
-                  </div>
-                  <div className="contentCard">
-                    <HighlightText type='primary'>{ Pet.name }</HighlightText>
-                  </div>
-                  <div className="footerCard">
-                    <Text type='secondary' className='no-margin'>Gato <span>(Felis catus)</span></Text>
-                    <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
-                  </div>
-                </div>
-                </div>
-                <div className="dash-box full">
+                <div className="dash-box third">
                   <Calendar year={year} month={month} setMonth={setMonth} setYear={setYear}  petId={Pet.id || undefined}/>
+                </div>
+                <div className="dash-box quarter pet-box">
+                  <div className="leftCard">
+                    <EventsActions Pet={Pet} entity='pet'/>
+                    <div className="headerCard">
+                      {Pet.isCastrated  && <Text type='badge' className='no-margin yellowBadge'>Castrado</Text>}
+                      {Pet.isVaccinated && <Text type='badge' className='no-margin blueBadge'>Vacinado</Text>}
+                      {Pet.microchip    && <Text type='badge' className='no-margin greenBadge'>Chipado</Text>}
+                      {Pet.isFelv       && <Text type='badge' className='no-margin redBadge'>Felv</Text>}
+                      {Pet.isFiev       && <Text type='badge' className='no-margin redBadge'>Fiv</Text>}
+                    </div>
+                    <div className="contentCard">
+                      <HighlightText type='primary'>{ Pet.name }</HighlightText>
+                    </div>
+                    <div className="footerCard">
+                      <Text type='secondary' className='no-margin'>Gato <span>(Felis catus)</span></Text>
+                      <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
+                    </div>
+                  </div>
                 </div>
             </div>
             </>
