@@ -15,10 +15,10 @@ const UserHome: React.FC<UserHomeProps> = ({ User }) => {
   
   return (
     <div className="home-content">
-      <HighlightText type='primary'>{ User?.name }</HighlightText>
         <div className="dashboard">
           
-          <div className="dash-box quarter">
+          <div className="dash-box half">
+            <HighlightText type='primary'>{ User?.name }</HighlightText>
             { User.family && (
               <DashboardFamilyCard Family={User.family} />
             ) }
@@ -26,7 +26,7 @@ const UserHome: React.FC<UserHomeProps> = ({ User }) => {
           
           {/* <Events></Events> */}
 
-          <div className="dash-box full">
+          <div className="dash-box half">
             { User.pets && (
               <DashboardPetCard user={User} isProfile={true}/>
             ) }
