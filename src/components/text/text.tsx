@@ -2,7 +2,7 @@ import clsx from "clsx";
 import style from "./text.module.css";
 
 type TextProps = {
-  type: "primary" | "secondary" | "headline" | 'legend';
+  type: "primary" | "secondary" | "headline" | 'legend' | 'badge';
   children: React.ReactNode;
   className?: string;
 };

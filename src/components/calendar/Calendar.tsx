@@ -88,8 +88,8 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMont
 
         return actionsForDay.map((action) => (
             <Tooltip content={action.tooltip} key={action.id}>
-                <HighlightText type='headline' >• { action.description }</HighlightText>
-                <span onClick={() => {deleteEventsById({id:action.id, _callback: SetEvents})}} >X</span>
+                <span onClick={() => {deleteEventsById({id:action.id, _callback: SetEvents})}} > x</span>
+                <Text type='badge' className='no-margin blueBadge'>{ action.description }</Text>
             </Tooltip>
         ));
     };

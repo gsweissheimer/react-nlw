@@ -13,18 +13,15 @@ interface PetHomeProps {
 }
 
 const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
-
     const calculateAge = (birthdate: string) => {
       const birthDate = new Date(birthdate);
       const today = new Date();
       let years = today.getFullYear() - birthDate.getFullYear();
       let months = today.getMonth() - birthDate.getMonth();
-  
       if (months < 0) {
         years--;
         months += 12;
       }
-  
       return `${years} anos`;
     };
     const currentDate = new Date();
@@ -32,31 +29,35 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
     const _year = currentDate.getFullYear();
     const [year, setYear] = useState(_year);
     const [month, setMonth] = useState(_month);
-  
+
     return (
       <div className="pet-content">
-        
         <EventsActions Pet={Pet} entity='pet'/>
-
           {Pet && (
             <>
               <div className="dashboard">
-
                 <div className="dash-box full pet-box">
-
-                  <HighlightText type='primary'>{ Pet.name }</HighlightText>
-                  <Text type='secondary' className='no-margin'>{ Pet.type }</Text>
-                  <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
-                  <Text type='secondary' className='no-margin'>{ Pet.microchip ? 'Com chip' : 'Sem chip' }</Text>
-
+                <div className="leftCard">
+                  <div className="headerCard">
+                    {Pet.isCastrated  && <Text type='badge' className='no-margin yellowBadge'>Castrado</Text>}
+                    {Pet.isVaccinated && <Text type='badge' className='no-margin blueBadge'>Vacinado</Text>}
+                    {Pet.microchip    && <Text type='badge' className='no-margin greenBadge'>Chipado</Text>}
+                    {Pet.isFelv       && <Text type='badge' className='no-margin redBadge'>Felv</Text>}
+                    {Pet.isFiev       && <Text type='badge' className='no-margin redBadge'>Fiv</Text>}
+                  </div>
+                  <div className="contentCard">
+                    <HighlightText type='primary'>{ Pet.name }</HighlightText>
+                  </div>
+                  <div className="footerCard">
+                    <Text type='secondary' className='no-margin'>Gato <span>(Felis catus)</span></Text>
+                    <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
+                  </div>
                 </div>
-
+                </div>
                 <div className="dash-box full">
                   <Calendar year={year} month={month} setMonth={setMonth} setYear={setYear}  petId={Pet.id || undefined}/>
                 </div>
-
             </div>
-
             </>
           )}
       </div>

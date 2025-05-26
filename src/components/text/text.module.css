@@ -1,15 +1,23 @@
 /* text.module.css */
+
 .text {
-    margin: 0;
-    padding: 0;
-  }
-  
+  margin: 0;
+  padding: 0;
+}
+.badge {
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 10px !important;
+  height: auto;
+  border-radius: 25px;
+}
+
 .primary {
   color: var(--dark-color);
   font-weight: 500;
   font-size: 1.3rem;
-  line-height:  1.3rem;
-  margin: 0 0  1.3rem;
+  line-height: 1.3rem;
+  margin: 0 0 1.3rem;
 }
 
 .secondary {
@@ -37,4 +45,3 @@
   padding: 0 4px;
   margin: 0 0 0.7rem;
 }
-  

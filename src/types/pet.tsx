@@ -7,4 +7,10 @@ export interface Pet {
   tutorId: string;
   birthDate: string;
   microchip: boolean;
+  isVaccinated?: boolean
+  isCastrated?: boolean
+  isFiev?: boolean
+  isFelv?: boolean
+  dewormedExpirationDate?: Date | null
+  antiFleaExpirationDate?: Date | null
 }
