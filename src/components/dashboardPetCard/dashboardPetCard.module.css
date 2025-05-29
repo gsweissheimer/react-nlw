@@ -14,8 +14,8 @@
     align-content: stretch;
     justify-content: flex-start;
     align-items: center;
-    gap: 32px; 
-    margin: 0 0 2rem;
+    gap: 16px; 
+    margin: 2rem 0 2rem;
 }
 
 .petCardsFooter {
@@ -59,6 +59,10 @@
     margin-left: 12px;
     height: 0%;
     z-index: -1;
+}
+
+.petButtonTitle {
+    margin: 0;
 }
 
 .buttonBox:hover .buttonOptions {

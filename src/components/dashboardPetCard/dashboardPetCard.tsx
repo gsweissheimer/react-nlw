@@ -70,7 +70,7 @@ const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user, isProfile = f
           <div className={styles.buttonBox} key={Pet.id}>
             <Button color={Pet.color} type='secondary' onclick={() => console.log('Pet', Pet)}>
                 <Link to={`/pet/${Pet.id}`}>
-                  <h2>{ Pet.name } { Pet.type === 'cat' ? <FaCat /> : <FaDog />}</h2>
+                  <h4 className={styles.petButtonTitle}>{ Pet.name } { Pet.type === 'cat' ? <FaCat /> : <FaDog />}</h4>
                 </Link>
             </Button>
             {isProfile && <div className={styles.buttonOptions}>
