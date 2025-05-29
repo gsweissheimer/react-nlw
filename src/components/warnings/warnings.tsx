@@ -10,9 +10,14 @@ interface WarningsProps {
 const Warnings: React.FC<WarningsProps> = ({ Pet }) => {
     const now = new Date();
 
+    const closeWarning = (e: React.MouseEvent<SVGElement>) => {
+        e.preventDefault();
+        document.getElementById('warningModal')?.remove();
+    }
+
     return (
-        <div className={style.warningsContent}>
-            <h3 className={style.title}>Avisos <FaPlus /></h3>
+        <div id='warningModal' className={style.warningsContent}>
+            <h3 className={style.title}>Avisos <FaPlus onClick={closeWarning} /></h3>
 
             {(Pet.dewormedExpirationDate
                 && new Date(Pet.dewormedExpirationDate) < now)

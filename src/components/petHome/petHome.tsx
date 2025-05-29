@@ -41,7 +41,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
                   <div className="dash-box full pet-box">
                     <div className="leftCard">
                       <div className="headerCard">
-                        {/* <Warnings Pet={Pet} /> */}
+                        <Warnings Pet={Pet} />
                         <PetFlags Pet={Pet} />  
                       </div>
                       <div className="contentCard">
