@@ -1,5 +1,5 @@
 
-import { Event } from '../types/';
+import { Event, EventAction } from '../types/';
 import api from './Api';
 
 const eventService = {
@@ -36,7 +36,15 @@ const eventService = {
         }).catch((error) => {
             console.log(error);
         });
+    },
+    getEventActions: async (params: { callback: (data: any) => void }): Promise<void> => {
+        await api.get('/actions').then((response) => {
+            params.callback(response.data.data);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
+
 };
 
 

@@ -3,7 +3,7 @@ import Input from '../form/inputForm';
 import Button from 'components/button/button';
 import HighlightText from 'components/highlightText/highlightText';
 import Select from 'components/form/selectForm';
-import { User, Event, EntityOption, EventActions, EventAction } from '../../types';
+import { User, Event, EntityOption, EventAction } from '../../types';
 import DatePicker from 'components/form/dataForm';
 
 import { useEventContext } from 'context/EventContext';
@@ -43,7 +43,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
       type: "event",
     });
 
-    const { insertEvent, SetEvents } = useEventContext();
+    const { insertEvent, SetEvents, EventActions } = useEventContext();
     const { user } = useContext(AuthContext);
 
     const [entities, setEntities] = useState<EntityOption[]>([]);
@@ -149,7 +149,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
         formData.entityType = optionsDictionary.find(option => option.value === e.target.value)?.entity || '';
       }
       if (e.target.name === 'value') {
-        formData.name = EventActions.find(action => action.value === e.target.value)?.label || '';
+        formData.name = EventActions?.find(action => action.value === e.target.value)?.label || '';
       }
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -226,7 +226,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
                 name='value'
                 value={formData.value}
                 onChange={handleSelectChange}
-                options={EventActions}
+                options={EventActions ?? []}
                 error={errors?.name}
             />
             

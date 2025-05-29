@@ -1,16 +1,18 @@
 // src/context/EventContext.tsx
 import React, { createContext, ReactNode, useContext } from 'react';
 import { useEvent } from '../hooks/useEvent';
-import { Event as EventType } from '../types';
+import { EventAction, Event as EventType } from '../types';
 
 type EventContextType = {
   Event: EventType | null;
   Events: EventType[] | null;
+  EventActions: EventAction[] | null;
   SetEvent: React.Dispatch<React.SetStateAction<EventType | null>>;
   SetEvents: React.Dispatch<React.SetStateAction<EventType[] | null>>;
   insertEvent: (params: { event: EventType }) => Promise<EventType | undefined>;
   getEventsByTutorId: (params: { id: string }) => Promise<void>;
   getEventsByPetId: (params: { id: string }) => Promise<void>;
+  getEventActions: () => Promise<void>;
   handleEvent: (
     e: React.MouseEvent<HTMLButtonElement>,
     entityId: string,
@@ -28,11 +30,13 @@ export const EventProvider = ({ children }: { children: ReactNode }) => {
   const {
     Event,
     Events,
+    EventActions,
     SetEvent,
     SetEvents,
     insertEvent,
     getEventsByTutorId,
     getEventsByPetId,
+    getEventActions,
     handleEvent,
     deleteEventsById,
   } = useEvent();
@@ -42,11 +46,13 @@ export const EventProvider = ({ children }: { children: ReactNode }) => {
       value={{
         Event,
         Events,
+        EventActions,
         SetEvent,
         SetEvents,
         insertEvent,
         getEventsByTutorId,
         getEventsByPetId,
+        getEventActions,
         handleEvent,
         deleteEventsById,
       }}
