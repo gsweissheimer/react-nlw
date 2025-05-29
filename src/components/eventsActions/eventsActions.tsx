@@ -23,7 +23,6 @@ const EventsActions: React.FC<PetActionProps> = ({ Pet, entity }) => {
 
     useEffect(() => {
         setEntityId(getEntityId());
-        console.log('getEntityId', entity, Pet, user);
     }, [entity, Pet, user]);
 
     useEffect(() => {

@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import Header from '../../components/Header/Header';
 
 import style from  './dashboard.module.css';
+import { useToken } from 'hooks/useToken';
 
 type DashboardProps = {
   pageTitle?: string,
@@ -10,7 +11,8 @@ type DashboardProps = {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ pageTitle, children }) => {
-  const token = Cookies.get('catdogtok');
+  const { getToken } = useToken();
+  const token = getToken();
   return (
     <div className={style.dashboardLayout}>
       <Header token={token} pageTitle={pageTitle} />

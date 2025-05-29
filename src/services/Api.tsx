@@ -27,7 +27,6 @@ export const setupAxiosInterceptors = (navigate: (path: string) => void) => {
         (response) => response, // Se a resposta for bem-sucedida, simplesmente retorna
         (error) => {
             const url = error.config?.url;
-            console.log('Error:', error.response?.status, url);
             // Verifica se o erro é 401 e se a rota é protegida (/miau)
             if (error.response?.status === 403 || error.response?.status === 401) {
                 Cookies.remove('catdogtok'); // Remove o token inválido

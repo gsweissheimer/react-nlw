@@ -25,7 +25,6 @@ const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user, isProfile = f
   const [editPet, setEditPet] = useState<Pet | null>(null);
 
   useEffect(() => {
-    console.log('Pets', Pets)
     if (Pets.length === 0) {
       SetPets([...user.pets, ...(user.family?.users.flatMap(user => user.pets) || [])])
     }
@@ -43,7 +42,6 @@ const DashboardPetCard: React.FC<DashboardPetCardProps> = ({ user, isProfile = f
 
   const handleEditPet = (petId: string) => {
     const petToEdit = Pets.find(pet => pet.id === petId); 
-    console.log('petToEdit', petToEdit)
     if (petToEdit) {
       setEditPet(petToEdit);
       setIsOpen(true);

@@ -10,7 +10,6 @@ interface DashboardFamilyCardProps {
 }
 
 const DashboardFamilyCard: React.FC<DashboardFamilyCardProps> = ({ Family }) => {
-  console.log('DashboardFamilyCard', Family);
   return (
     <div className={style.familyMain}>
       <Text type='primary' className={style.familyCard}>Família</Text>
