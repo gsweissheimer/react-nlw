@@ -27,12 +27,14 @@ const { user } = useContext(AuthContext);
 
       {/* <NotificationBanner notifications={notifications} /> */}
 
+      <div className="dash-box full">
+        <EventsActions entity='family' />
+      </div>
 
       <div className="dash-box third">
         <Calendar year={year} month={month} setMonth={setMonth} setYear={setYear} userId={user.tutorId || undefined} />
       </div>
       <div className="dash-box quarter">
-        <EventsActions entity='family' />
 
         <HighlightText type='primary'>{user?.name}</HighlightText>
 

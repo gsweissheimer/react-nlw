@@ -149,12 +149,11 @@ body {
   max-width: 100vw;
   margin: 0 auto;
   width: 100%;
-  overflow: hidden;
   justify-items: stretch;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: stretch;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
@@ -166,6 +165,14 @@ body {
   box-shadow: 0 2px 4px var(--dark-shadow-color);
   width: 100%;
 }
+.box {
+    border-radius: 8px;
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
 .dash-box.pet-box {
   display: flex;
@@ -176,24 +183,28 @@ body {
   gap: 1rem;
 }
 
-.dash-box.full {
+.dash-box.full,
+.box.full {
   width: 100vw;
   max-width: 100%;
 }
 
-.dash-box.third {
+.dash-box.third,
+.box.third {
   width: 100vw;
   max-width: 74%;
 }
 
 
-.dash-box.half {
+.dash-box.half,
+.box.half {
   width: 100vw;
   max-width: 49%;
 }
 
 
-.dash-box.quarter {
+.dash-box.quarter,
+.box.quarter {
   width: 100vw;
   max-width: 24%;
 }
@@ -249,6 +260,7 @@ body {
   justify-content: flex-start;
   align-content: center;
   gap: 16px;
+  width: 100%;
 }
 
 .contentCard {
@@ -274,26 +286,38 @@ body {
   }
 }
 
-.yellowBadge {
-  background-color: #fdff9582;
-  border: 2px solid #dcd800;
-  color: #959200;
+.pinkBadge {
+  background-color: #ff95c582;
+  border: 2px solid #dc0075;
+  color: #dc0075;
 }
-
+.purpleBadge {
+  background-color: #c995ff82;
+  border: 2px solid #7c00dc;
+  color: #7c00dc;
+}
+.blueBadge {
+  background-color: #95c9ff82;
+  border: 2px solid #0074dc;
+  color: #0074dc;
+}
+.greenBadge {
+  background-color: #95ff9e82;
+  border: 2px solid #00dc12;
+  color: #00750a;
+}
 .redBadge {
   background-color: #ff959582;
   border: 2px solid #dc0000;
   color: #dc0000;
 }
-
-.blueBadge {
-  background-color: #9c95ff82;
-  border: 2px solid #2100dc;
-  color: #2100dc;
+.yellowBadge {
+  background-color: #fdff9582;
+  border: 2px solid #dcd800;
+  color: #959200;
 }
-
-.greenBadge {
-  background-color: #95ff9e82;
-  border: 2px solid #00dc12;
-  color: #00750a;
+.orangeBadge {
+  background-color: #ffb89582;
+  border: 2px solid #dc6f00;
+  color: #dc6f00;
 }

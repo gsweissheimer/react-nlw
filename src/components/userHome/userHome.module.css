@@ -1,8 +1,11 @@
 /* userHome.module.css */
 .homeContent {
-    display: flex
-;
+    display: flex;
     gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 .homeContent h2.title {
     font-weight: 400;

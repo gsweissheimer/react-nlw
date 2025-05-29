@@ -1,0 +1,23 @@
+/* warnings.module.css */
+.warningsContent {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 16px;
+    background: #fbff4661;
+    border-radius: 12px;
+}
+.title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #8f8700;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.title svg {
+    transform: rotate(45deg);
+}

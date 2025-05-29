@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
 }
 
 .calendarHeader {
@@ -19,7 +18,7 @@
 
 .calendarHeader h2 {
     font-size: 1.8rem;
-    margin-bottom: 20px;
+    margin: 0px;
 }
 
 .calendarHeaderButton {
