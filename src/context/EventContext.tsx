@@ -1,18 +1,22 @@
 // src/context/EventContext.tsx
 import React, { createContext, ReactNode, useContext } from 'react';
 import { useEvent } from '../hooks/useEvent';
-import { EventAction, Event as EventType } from '../types';
+import { Event, EventAction, Event as EventType } from '../types';
 
 type EventContextType = {
   Event: EventType | null;
   Events: EventType[] | null;
   EventActions: EventAction[] | null;
+  todayEvents: Event[] | null;
   SetEvent: React.Dispatch<React.SetStateAction<EventType | null>>;
   SetEvents: React.Dispatch<React.SetStateAction<EventType[] | null>>;
+  SetTodayEvents: React.Dispatch<React.SetStateAction<Event[] | null>>;
+  inactivateEvent: (id: string) => Promise<void>;
   insertEvent: (params: { event: EventType }) => Promise<EventType | undefined>;
   getEventsByTutorId: (params: { id: string }) => Promise<void>;
   getEventsByPetId: (params: { id: string }) => Promise<void>;
   getEventActions: () => Promise<void>;
+  getTodaysEvents: () => void;
   handleEvent: (
     e: React.MouseEvent<HTMLButtonElement>,
     entityId: string,
@@ -31,12 +35,16 @@ export const EventProvider = ({ children }: { children: ReactNode }) => {
     Event,
     Events,
     EventActions,
+    todayEvents,
     SetEvent,
     SetEvents,
+    SetTodayEvents,
     insertEvent,
+    inactivateEvent,
     getEventsByTutorId,
     getEventsByPetId,
     getEventActions,
+    getTodaysEvents,
     handleEvent,
     deleteEventsById,
   } = useEvent();
@@ -47,12 +55,16 @@ export const EventProvider = ({ children }: { children: ReactNode }) => {
         Event,
         Events,
         EventActions,
+        todayEvents,
         SetEvent,
         SetEvents,
+        SetTodayEvents,
+        inactivateEvent,
         insertEvent,
         getEventsByTutorId,
         getEventsByPetId,
         getEventActions,
+        getTodaysEvents,
         handleEvent,
         deleteEventsById,
       }}

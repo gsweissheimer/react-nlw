@@ -7,6 +7,7 @@ export interface EntityOption {
       label: string;
       value: string;
       entity: string;
+      type?: string;
   };
 
 export interface Event {
@@ -14,6 +15,9 @@ export interface Event {
     name: string | null;
     value?: string;
     tooltip?: string;
+    status?: string;
+    createdAt?: string;
+    updatedAt?: string;
     type?: string;
     entityId?: string;
     entityType?: string;

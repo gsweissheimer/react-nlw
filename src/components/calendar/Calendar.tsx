@@ -46,6 +46,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMont
         date: event.eventDate || "",
         description: event.name || "",
         tooltip: event.tooltip || "",
+        type: event.type || "",
         })) || []
       );
 
@@ -54,7 +55,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMont
           getEventsByPetId({ id: petId });
         }
       }, [petId]);
-
+      
       useEffect(() => {
         if (userId) {
             getEventsByTutorId({ id: userId });
@@ -69,6 +70,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMont
               date: event.eventDate || "",
               description: event.name || "",
               tooltip: event.tooltip || "",
+              type: event.type || "",
             }))
           );
         }
@@ -85,11 +87,11 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMont
             const actionDate = new Date(action.date);
             return actionDate.getDate() === day && actionDate.getMonth() === month - 1 && actionDate.getFullYear() === year;
         });
-
+        
         return actionsForDay.map((action) => (
             <Tooltip content={action.tooltip} key={action.id}>
                 <span onClick={() => {deleteEventsById({id:action.id, _callback: SetEvents})}} > x</span>
-                <Text type='badge' className='no-margin blueBadge'>{ action.description }</Text>
+                <Text type='badge' className={`no-margin ${ action.type === 'notification'? 'orangeBadge' : 'blueBadge'}`} >{ action.description }</Text>
             </Tooltip>
         ));
     };

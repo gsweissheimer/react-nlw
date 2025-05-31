@@ -23,6 +23,16 @@ const eventService = {
             return false;
         }
     },
+    inactiveEventById: async (params: { id: string }): Promise<boolean> => {
+        try {
+            const response = await api.put(`/event/${params.id}/inactive`);
+            return response.data; 
+        }
+        catch (error) {
+            console.error('Erro ao inativar evento:', error);
+            return false; // Return null if the event could not be inactivated
+        }
+    },
     getEventsByTutorId: async (params: { id: string, callback: (data: any) => void }) => {
         api.get(`/event/${params.id}`).then((response) => {
             params.callback(response.data.data);

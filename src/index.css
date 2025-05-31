@@ -239,9 +239,11 @@ body {
   color: var(--secondary-color) !important;
 }
 
+.formcontent {
+    width: 100%;
+}
 
 .doubleInputLine {
-  display: flex;
   gap: 32px;
   align-items: center;
   justify-content: space-between;
@@ -249,7 +251,7 @@ body {
 }
 
 .doubleInputLine .form-input-container {
-  width: 50%;
+  width: 100%;
 }
 
 .headerCard {

@@ -40,7 +40,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
       eventDate: new Date().toISOString().split('T')[0],
       name: "",
       value: "",
-      type: "event",
+      type: "",
     });
 
     const { insertEvent, SetEvents, EventActions } = useEventContext();
@@ -150,6 +150,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
       }
       if (e.target.name === 'value') {
         formData.name = EventActions?.find(action => action.value === e.target.value)?.label || '';
+        formData.type = EventActions?.find(action => action.value === e.target.value)?.type || '';
       }
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -193,13 +194,13 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
         eventDate: new Date().toISOString().split('T')[0],
         name: "",
         value: "",
-        type: "event",
+        type: "",
       });
       setErrors(null);
     }
 
   return (
-    <>
+    <div className='formcontent'>
         <HighlightText type='secondary' className='white-title'>Adicionar Event</HighlightText>
         <form className={`event-form form-container ${className}`} onSubmit={handleSubmit}>
             
@@ -255,7 +256,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
 
             <Button type='primary' submitButton={true}>{"Adicionar"}</Button>
         </form>
-    </>
+    </div>
   );
 };
 

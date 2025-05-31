@@ -1,25 +1,44 @@
 /* notificationBanner.module.css */
 .notificationBanner {
-    width: 100%;
-    background: var(--white-color);
-    border: 1px solid var(--primary-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px var(--dark-light-shadow-color);
-    text-align: center;
-    position: relative;
-    margin-top: -1rem;
-    margin-bottom: 1rem;
-  }
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
 
-  .notificationContent ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .notificationContent li {
-    padding-left: 16px;
-    color: var(--dark-color);
-    text-align: left;
-    font-size: 1rem;
-    line-height: 1rem;
-  }
+.notificationContent h2 {
+  text-align: left;
+}
+
+.notificationContent ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notificationContent li {
+  display: flex;
+}
+
+.notificationContent li p {
+  padding-left: 16px;
+  color: var(--bright-color);
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.notificationContent li p span {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.notificationContent li+li {
+  margin-top: 0.5rem;
+}
+
+li button {
+  position: relative !important;
+  top: 0 !important;
+  right: 0 !important;
+  line-height: 18px !important;
+}
