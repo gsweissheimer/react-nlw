@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { History, HistoryItem, Pet } from 'types';
 import { FaPills, FaSyringe, FaBookMedical, FaFileMedical, FaBug, FaTrashAlt, FaRegEdit, FaHospital, FaPlus } from 'react-icons/fa';
 import styles from './historyFeatures.module.css';
@@ -6,6 +6,7 @@ import Button from 'components/button/button';
 import Modal from 'components/modal/modal';
 import { EventTable } from 'components/eventTable/eventTable';
 import HistoryForm from 'components/historyForm/historyForm';
+import { usePetHistory } from 'hooks/usePetHistory';
 
 interface HistoryFeaturesProps {
     Pet: Pet;
@@ -14,12 +15,30 @@ const HistoryFeatures: React.FC<HistoryFeaturesProps> = ({ Pet }) => {
 
     const [ tableIsOpen, setTableIsOpen ] = React.useState(false);
     const [ formIsOpen, setFormIsOpen ] = React.useState(false);
+    const [ pet, setPet ] = React.useState<Pet>(Pet);
+
+    const { deleteHistoryItem } = usePetHistory();
 
     const [ history, setHistory ] = React.useState<History>({
         name: '',
         type: '',
         data: []
     });
+
+    const handleDleteHistoryItem = async (params: { id: string, eventType: string }) => {
+        deleteHistoryItem({ id: params.id })
+            .then((res) => {
+                if (res) {
+                  if (history.data && pet.history && pet.history) {
+                    Pet.history = Pet.history?.filter(event => event.id !== params.id);
+                    handleOpenTableModal(params.eventType);
+                  }
+                }
+            })
+            .catch((error) => {
+                console.error("Erro ao deletar evento:", error);
+            });
+    }
 
     const handleOpenFormModal = () => {
         setFormIsOpen(true)
@@ -34,6 +53,7 @@ const HistoryFeatures: React.FC<HistoryFeaturesProps> = ({ Pet }) => {
     }
 
     const handleOpenTableModal = (feature: string) => {
+        
         if (!Pet.history) {
             console.error('Pet history is not available');
             return;
@@ -44,12 +64,12 @@ const HistoryFeatures: React.FC<HistoryFeaturesProps> = ({ Pet }) => {
             eventTypeLabel: event.eventTypeLabel,
             name: event.name,
             actions:    <>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Excluir')}>
+                            <Button type='icon' className={styles.closeButton} onclick={() => handleDleteHistoryItem({id: event.id!, eventType: event.eventType})}>
                                 <FaTrashAlt />
                             </Button>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Editar')}>
+                            {/* <Button type='icon' className={styles.closeButton} onclick={() => handleDleteHistoryItem({id: event.id!})}>
                                 <FaRegEdit />
-                            </Button>
+                            </Button> */}
                         </>,
         })) || [];
         setHistory({

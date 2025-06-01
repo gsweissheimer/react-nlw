@@ -5,6 +5,7 @@ export interface History {
 };
 
 export type HistoryItem = {
+  id?: string;
   eventDate: Date | string;
   petId?: string;
   eventType: string;

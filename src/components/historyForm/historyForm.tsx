@@ -87,7 +87,7 @@ const HistoryForm = ({ className, onclose, setnewpethistory, _setHistory, petId,
     
     formDataState.petId = petId;
     
-    const _method = formDataState ? updateHistoryItem : insertHistoryItem;
+    const _method = formDataState.id ? updateHistoryItem : insertHistoryItem;
 
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -103,13 +103,15 @@ const HistoryForm = ({ className, onclose, setnewpethistory, _setHistory, petId,
       eventTypeLabel: formDataState.eventTypeLabel,
       name: formDataState.name,
     };
-
-    _method({ historyItem: formData, callback: () => {} }).then(() => {
+    
+    _method({ historyItem: formData, callback: setnewpethistory }).then((res: any) => {
       resetValues();
       if (onclose) onclose();
-      setnewpethistory(formData)
+      if (res && res.data && res.data.id) {
+        formData.id = res.data.id;
+      }
       _setHistory((prevHistoryItem: HistoryItem[]) => [
-        ...prevHistoryItem.filter((historyItem) => historyItem.petId !== formDataState.petId),
+        ...prevHistoryItem.filter((historyItem) => historyItem.id !== formDataState.id),
         formData,
       ]);
     }).catch(() => {
