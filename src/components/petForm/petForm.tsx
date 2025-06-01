@@ -6,6 +6,7 @@ import Select from 'components/form/selectForm';
 import { Pet, User } from 'types';
 import Checkbox from 'components/form/checkBoxForm';
 import DatePicker from 'components/form/dataForm';
+import styles from './petForm.module.css';
 
 import { usePet } from '../../hooks/usePet';
 
@@ -129,7 +130,7 @@ const PetForm = ({ user, className, onclose, setnewpet, _setPets, pet }: PetForm
     }
 
   return (
-    <>
+    <div className={styles.petFormContent}>
         <HighlightText type='secondary' className='white-title'>Adicionar Pet</HighlightText>
         <form className={`pet-form form-container ${className}`} onSubmit={handleSubmit}>
             <Input
@@ -200,7 +201,7 @@ const PetForm = ({ user, className, onclose, setnewpet, _setPets, pet }: PetForm
 
             <Button type='primary' submitButton={true}>{pet ? "Editar" : "Adicionar"}</Button>
         </form>
-    </>
+    </div>
   );
 };
 

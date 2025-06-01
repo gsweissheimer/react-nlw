@@ -5,3 +5,8 @@
 .formId {
     display: none;
 }
+.petFormContent,
+.petFormContent h2,
+.petFormContent form  {
+    width: 100%;
+}

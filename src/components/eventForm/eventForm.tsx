@@ -33,11 +33,10 @@ type Errors = {
 }
 
 const EventForm = ({ className, onclose }: EventFormProps) => {
-
     const [formData, setFormData] = useState<FormData>({
       entityId: "",
       entityType: "",
-      eventDate: new Date().toISOString().split('T')[0],
+      eventDate: new Date().toISOString(),
       name: "",
       value: "",
       type: "",
@@ -167,11 +166,12 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
       const formEvent: Event = {
         entityType: formData.entityType,
         entityId: formData.entityId,
-        eventDate: new Date(`${formData.eventDate}T${new Date().toTimeString().split(' ')[0]}`).toISOString(),
+        eventDate: formData.eventDate,
         value: formData.value,
         name: formData.name,
         type: formData.type,
       };
+      console.log('formEvent', formEvent);
 
       insertEvent({event: formEvent}).then(() => {
         resetValues();
@@ -245,6 +245,7 @@ const EventForm = ({ className, onclose }: EventFormProps) => {
             <DatePicker
                   label="Data do Evento"
                   name='eventDate'
+                  inputType='datetime-local'
                   value={formData.eventDate}
                   onChange={handleInputChange}
                   error={errors?.eventDate}
