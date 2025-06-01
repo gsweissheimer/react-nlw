@@ -44,6 +44,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMont
         Events?.map(event => ({
         id: event.id || "",
         date: event.eventDate || "",
+        status: event.status || "",
         description: event.name || "",
         tooltip: event.tooltip || "",
         type: event.type || "",
@@ -68,6 +69,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMont
             Events.map(event => ({
               id: event.id || "",
               date: event.eventDate || "",
+                status: event.status || "",
               description: event.name || "",
               tooltip: event.tooltip || "",
               type: event.type || "",
@@ -91,7 +93,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, petId, userId, setMont
         return actionsForDay.map((action) => (
             <Tooltip content={action.tooltip} key={action.id}>
                 <span onClick={() => {deleteEventsById({id:action.id, _callback: SetEvents})}} > x</span>
-                <Text type='badge' className={`no-margin ${ action.type === 'notification'? 'orangeBadge' : 'blueBadge'}`} >{ action.description }</Text>
+                <Text type='badge' className={`no-margin ${ (action.type === 'notification' && action.status === 'active')? 'orangeBadge' : 'blueBadge'}`} >{ action.description }</Text>
             </Tooltip>
         ));
     };

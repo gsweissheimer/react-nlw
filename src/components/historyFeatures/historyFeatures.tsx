@@ -51,6 +51,33 @@ const HistoryFeatures: React.FC<HistoryFeaturesProps> = ({ Pet }) => {
     const handleAddHistoryItem = (historyItem: HistoryItem) => {
         Pet.history = [...Pet.history || [], historyItem];
     }
+    
+
+    function getEventTypeLabel(feature: string): string {
+        switch (feature) {
+            case 'feature_doctor':
+                return 'Consultas';     
+                break;
+            case 'feature_exam':
+                return 'Exames';
+                break;
+            case 'feature_vaccines':
+                return 'Vacinas';
+                break;
+            case 'feature_meds':
+                return 'Medicamentos';
+                break;
+            case 'feature_erradicators':
+                return 'Erradicadores';
+                break;
+            case 'feature_surgery':
+                return 'Cirurgias';
+                break;
+            default:
+                return 'Outros';
+                break;
+        }
+    }
 
     const handleOpenTableModal = (feature: string) => {
         
@@ -73,7 +100,7 @@ const HistoryFeatures: React.FC<HistoryFeaturesProps> = ({ Pet }) => {
                         </>,
         })) || [];
         setHistory({
-            name: feature.replace('feature_', '').replace('_', ' ').toLocaleUpperCase(),
+            name: getEventTypeLabel(feature),
             type: feature,
             data: events.filter(event => event.eventType === feature)
         });
