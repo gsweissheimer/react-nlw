@@ -1,0 +1,12 @@
+/* historyForm.module.css */
+.formInputContainer {
+    margin-bottom: 1rem;
+}
+.formId {
+    display: none;
+}
+.historyFormContent,
+.historyFormContent h2,
+.historyFormContent form  {
+    width: 100%;
+}
