@@ -51,6 +51,24 @@
     line-height: 1em;
 }
 
+.icon {
+    padding: 12px;
+    border-radius: 50%;
+
+    background-color: transparent;
+    border-color: transparent !important;
+    color: var(--bright-color);
+    box-shadow: none;
+
+    width: fit-content;
+    line-height: 1em;
+}
+
+.icon:hover {
+    border-color: transparent !important;
+    color: var(--primary-color) !important;
+}
+
 .circleButtonDark {
     padding: 12px;
     border-radius: 50%;

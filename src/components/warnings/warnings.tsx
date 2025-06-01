@@ -1,7 +1,7 @@
 import Text from 'components/text/text';
 import React from 'react';
 import { Pet } from 'types';
-import { FaExclamation, FaCalendar, FaPills, FaSyringe, FaPlus } from "react-icons/fa";
+import { FaExclamation, FaCalendar, FaPills, FaSyringe, FaPlus, FaBug } from "react-icons/fa";
 import style from './warnings.module.css';
 
 interface WarningsProps {

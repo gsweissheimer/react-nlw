@@ -9,6 +9,7 @@ import HighlightText from '../highlightText/highlightText';
 import Text from '../text/text';
 import PetFlags from 'components/petFlags/petFlags';
 import Warnings from 'components/warnings/warnings';
+import HistoryFeatures from 'components/historyFeatures/historyFeatures';
 
 interface PetHomeProps {
   Pet?: Pet; 
@@ -50,6 +51,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
                       <div className="footerCard">
                         <Text type='secondary' className='no-margin'>Gato <span>(Felis catus)</span></Text>
                         <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
+                        <HistoryFeatures />
                       </div>
                     </div>
                   </div>
