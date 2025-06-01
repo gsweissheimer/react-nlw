@@ -3,8 +3,8 @@ import Cookies from 'js-cookie';
 
 // Criação de uma instância do Axios
 const api = axios.create({
-    // baseURL: 'https://nodejs-nlw-production.up.railway.app/miau', // Coloque sua URL base aqui
-    baseURL: 'http://localhost:3001/miau', // Coloque sua URL base aqui
+    baseURL: 'https://nodejs-nlw-production.up.railway.app/miau', // Coloque sua URL base aqui
+    // baseURL: 'http://localhost:3001/miau', // Coloque sua URL base aqui
 });
 
 // Adicionando o token Bearer automaticamente
