@@ -1,3 +1,5 @@
+import { HistoryItem } from "./history";
+
 export interface Pet {
   id?: string;
   name: string;
@@ -13,4 +15,5 @@ export interface Pet {
   isFelv?: boolean
   dewormedExpirationDate?: Date | null
   antiFleaExpirationDate?: Date | null
+  history?: HistoryItem[];
 }

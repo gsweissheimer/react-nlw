@@ -7,7 +7,7 @@ import Modal from 'components/modal/modal';
 import { EventTable } from 'components/eventTable/eventTable';
 
 interface HistoryFeaturesProps {
-    Pet?: Pet;
+    Pet: Pet;
 }
 const HistoryFeatures: React.FC<HistoryFeaturesProps> = ({ Pet }) => {
 
@@ -20,12 +20,16 @@ const HistoryFeatures: React.FC<HistoryFeaturesProps> = ({ Pet }) => {
     });
 
     const handleOpenModal = (feature: string) => {
-        const events: HistoryItem[] = [
-        {
-            eventDate: '2025-06-01',
-            eventType: 'feature_vaccines',
-            eventTypeLabel: 'Vacina',
-            name: 'Vacina V5',
+        console.log('feature', Pet);
+        if (!Pet.history) {
+            console.error('Pet history is not available');
+            return;
+        }
+        const events: HistoryItem[] = Pet.history?.map(event => ({
+            eventDate: event.eventDate,
+            eventType: event.eventType,
+            eventTypeLabel: event.eventTypeLabel,
+            name: event.name,
             actions:    <>
                             <Button type='icon' className={styles.closeButton} onclick={() => alert('Excluir')}>
                                 <FaTrashAlt />
@@ -34,77 +38,7 @@ const HistoryFeatures: React.FC<HistoryFeaturesProps> = ({ Pet }) => {
                                 <FaRegEdit />
                             </Button>
                         </>,
-        },
-        {
-            eventDate: '2025-06-01',
-            eventType: 'feature_exam',
-            eventTypeLabel: 'Exame',
-            name: 'Exame de Sangue',
-            actions:    <>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Excluir')}>
-                                <FaTrashAlt />
-                            </Button>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Editar')}>
-                                <FaRegEdit />
-                            </Button>
-                        </>,
-        },
-        {
-            eventDate: '2025-06-01',
-            eventType: 'feature_doctor',
-            eventTypeLabel: 'Veterinário',
-            name: 'Consulta de Rotina',
-            actions:    <>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Excluir')}>
-                                <FaTrashAlt />
-                            </Button>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Editar')}>
-                                <FaRegEdit />
-                            </Button>
-                        </>,
-        },
-        {
-            eventDate: '2025-06-01',
-            eventType: 'feature_meds',
-            eventTypeLabel: 'Medicamento',
-            name: 'Medicamento para os Rins',
-            actions:    <>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Excluir')}>
-                                <FaTrashAlt />
-                            </Button>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Editar')}>
-                                <FaRegEdit />
-                            </Button>
-                        </>,
-        },
-        {
-            eventDate: '2020-06-01',
-            eventType: 'feature_erradicators',
-            eventTypeLabel: 'Erradicador',
-            name: 'Antipulgas',
-            actions:    <>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Excluir')}>
-                                <FaTrashAlt />
-                            </Button>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Editar')}>
-                                <FaRegEdit />
-                            </Button>
-                        </>,
-        },
-        {
-            eventDate: '2025-06-01',
-            eventType: 'feature_erradicators',
-            eventTypeLabel: 'Erradicador',
-            name: 'Vermifugo',
-            actions:    <>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Excluir')}>
-                                <FaTrashAlt />
-                            </Button>
-                            <Button type='icon' className={styles.closeButton} onclick={() => alert('Editar')}>
-                                <FaRegEdit />
-                            </Button>
-                        </>,
-        }];
+        })) || [];
         setHistory({
             name: feature.replace('feature_', '').replace('_', ' ').toLocaleUpperCase(),
             type: feature,

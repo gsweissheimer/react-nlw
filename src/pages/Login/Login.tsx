@@ -23,14 +23,14 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://nodejs-nlw-production.up.railway.app/au/login', {
-                username,
-                password
-            });
-            // const response = await axios.post('http://localhost:3001/au/login', {
+            // const response = await axios.post('https://nodejs-nlw-production.up.railway.app/au/login', {
             //     username,
             //     password
             // });
+            const response = await axios.post('http://localhost:3001/au/login', {
+                username,
+                password
+            });
 
             const tokenWithoutBearer = response.data.token.replace('Bearer ', '');
             login(tokenWithoutBearer);

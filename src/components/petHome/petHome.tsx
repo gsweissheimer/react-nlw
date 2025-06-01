@@ -51,7 +51,7 @@ const PetHome: React.FC<PetHomeProps> = ({ Pet }) => {
                       <div className="footerCard">
                         <Text type='secondary' className='no-margin'>Gato <span>(Felis catus)</span></Text>
                         <Text type='secondary' className='no-margin'>{ calculateAge(Pet.birthDate) }</Text>
-                        <HistoryFeatures />
+                        <HistoryFeatures Pet={Pet} />
                       </div>
                     </div>
                   </div>
